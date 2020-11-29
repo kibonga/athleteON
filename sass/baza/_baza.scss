@@ -1,0 +1,47 @@
+// Globalni Reset
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html {
+    font-size: 62.5%;       
+    // 1rem == 10px;
+
+    @include respond(tablet-xl) {  
+        font-size: 56.25%;  
+        // width < 1200px
+        // 1rem == 9px;    
+    }
+
+    @include respond(tablet-sm) {   
+        font-size: 50%;     
+        // width < 900px
+        // 1rem == 8px;
+    }
+
+    @include respond(desktop-xl) {  
+        font-size: 75%;    
+        // width > 1800px
+        // 1rem == 12;
+    }
+}
+body {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+::selection {
+    background-color: $specijal;
+    color: $bela;
+}

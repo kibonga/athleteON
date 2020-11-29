@@ -1,0 +1,60 @@
+
+
+.center-text {
+    text-align: center;
+}
+
+
+// Margine
+.mb-lg {
+    margin-bottom: 8rem;
+
+    @include respond(tablet-sm) {
+        margin-bottom: 5rem;
+    }
+}
+.mb-md {
+    margin-bottom: 4rem;
+    
+    @include respond(tablet-sm) {
+        margin-bottom: 3rem;
+    }
+}
+.mb-sm {margin-bottom: 1.5rem;}
+
+.mt-md {margin-top: 4rem;}
+.mt-lg {margin-top: 8rem;}
+.mt-xl {margin-top: 10rem;}
+
+
+
+// Display
+.d-none {
+    display: none;
+}
+.d-block {
+    display: block;
+}
+
+
+// Dark Overlay
+.dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(rgba(#333, .63), rgba(#333, .63));
+    height: 100%;
+}
+
+
+// Nav Mobile
+.left {
+    transition: all .4s ease;
+    transform: translateX(-50rem);
+}
+.right {
+    transition: all .4s ease;
+    transform: translateX(0rem);
+}

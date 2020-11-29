@@ -1,0 +1,50 @@
+
+// Centriranje sadrzaja
+@mixin absoluteCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+// Media Query Menadzer
+@mixin respond($prelomna-tacka) {
+    @if $prelomna-tacka == mobilni {
+       @media only screen and (max-width: 37.5em) { @content };
+    }
+    @if $prelomna-tacka == tablet-sm {
+        @media only screen and (max-width: 56.25em) { @content };
+    }
+    @if $prelomna-tacka == tablet-xl {
+        @media only screen and (max-width: 75em) { @content };
+    }
+    @if $prelomna-tacka == desktop-xl {
+        @media only screen and (min-width: 112.5em) { @content };
+    }
+}
+
+
+
+// Grid
+@mixin fullBleed {
+    grid-template-columns: 
+        [fullBleed-start]
+        minmax(8rem, 1fr)
+        [center-start]
+        repeat(10, [col-start] minmax(min-content, 10.5rem) [col-end])
+        [center-end]
+        minmax(8rem, 1fr)
+        [fullBleed-end]
+    ;
+}
+
+@mixin gridCenter {
+    justify-content: center;
+    align-content: center;
+}
+
+@mixin gridSelfCenter {
+    justify-self: center;
+    align-self: center;
+}

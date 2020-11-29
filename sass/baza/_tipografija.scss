@@ -7,55 +7,72 @@ body {
 
 .heading-primarni {
     color: $bela;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     backface-visibility: hidden;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
     overflow: hidden;
     font-size: 3.5rem;
 
     &--glavni {
         display: block;
-        font-size: 6rem;
+        font-size: 4rem;
         font-weight: 400;
-        letter-spacing: 3.5rem;
+        letter-spacing: 1rem;
         animation: pomeriLevo 1s ease-out;
         @include respond(mobilni) {
             letter-spacing: 1rem;
-            font-size: 5rem;
+            font-size: 3rem;
         }
     }
     &--dopunski {
-        display: block;
-        font-size: 2rem;
+        letter-spacing: 1rem;
+        animation: pomeriDesno 1s ease-out;
+        color: $siva-tamna-1;
+        font-size: 1.5rem;
+        text-transform: uppercase;
         font-weight: 700;
-        letter-spacing: 1.75rem;
         animation: pomeriDesno 1s ease-out;
         @include respond(mobilni) {
             letter-spacing: .5rem;
+            font-size: 1rem;
+        }
+        @include respond(tablet-sm) {
+            font-size: 1.7rem;
+        }
+
+    }
+    span {
+        text-transform: uppercase;
+        color: $specijal;
+        font-weight: 700;
+        font-size: 5rem;
+        @include respond(mobilni) {
+            font-size: 4rem;
         }
     }
 }
 
 .heading-sekundarni {
-    font-size: 3.5rem;
+    color: $sekundarna-svetla;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
-    //background-image: linear-gradient(to right, $osnovna, $osnovna);
+    // @include box-shadow-2;
+    // box-shadow: 0 .3rem .4rem (rgba(#000, .5));
+    @include box-shadow-2;
+    padding: 1.2rem 2.4rem;
+    // animation: pomeriDesno 1s ease-out;
+    // background-image: linear-gradient(to right, $osnovna, $osnovna);
     display: inline-block;
-    -webkit-background-clip: text;
-    color: transparent;
-    letter-spacing: 2px;
+    // -webkit-background-clip: text;
+    letter-spacing: .2rem;
     transition: all .2s;
     @include respond(tablet-sm) {
-        font-size: 3rem;
+        font-size: 1.7rem;
     }
     @include respond(mobilni) {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
-    // &:hover {
-    //     transform: skewY(2deg) skewX(15deg) scale(1.1);
-    //     text-shadow: .5rem 1rem 2rem rgba($crna, 0.2);
-    // }
 }
 
 .heading-ternarni {

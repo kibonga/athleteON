@@ -50,7 +50,7 @@ a {
   margin-bottom: 1.5rem; }
 
 .mt-md {
-  margin-top: 4rem; }
+  margin-top: 5rem; }
 
 .mt-lg {
   margin-top: 8rem; }
@@ -71,7 +71,8 @@ a {
   bottom: 0;
   right: 0;
   background-image: linear-gradient(rgba(51, 51, 51, 0.63), rgba(51, 51, 51, 0.63));
-  height: 100%; }
+  height: 100%;
+  z-index: 80; }
 
 .left {
   transition: all .4s ease;
@@ -118,21 +119,20 @@ body {
 
 .heading-primarni {
   color: #fff;
-  text-transform: uppercase;
   backface-visibility: hidden;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
   overflow: hidden;
   font-size: 3.5rem; }
   .heading-primarni--glavni {
     display: block;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: 400;
-    letter-spacing: 3.5rem;
+    letter-spacing: 1rem;
     animation: pomeriLevo 1s ease-out; }
     @media only screen and (max-width: 37.5em) {
       .heading-primarni--glavni {
         letter-spacing: 1rem;
-        font-size: 5rem; } }
+        font-size: 3rem; } }
   .heading-primarni--dopunski {
     display: block;
     font-size: 2rem;
@@ -142,22 +142,31 @@ body {
     @media only screen and (max-width: 37.5em) {
       .heading-primarni--dopunski {
         letter-spacing: .5rem; } }
+  .heading-primarni span {
+    text-transform: uppercase;
+    color: #783030;
+    font-weight: 700;
+    font-size: 5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primarni span {
+        font-size: 4rem; } }
 
 .heading-sekundarni {
-  font-size: 3.5rem;
+  color: #999;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 700;
+  animation: pomeriDesno 1s ease-out;
   display: inline-block;
   -webkit-background-clip: text;
-  color: transparent;
   letter-spacing: 2px;
   transition: all .2s; }
   @media only screen and (max-width: 56.25em) {
     .heading-sekundarni {
-      font-size: 3rem; } }
+      font-size: 1.7rem; } }
   @media only screen and (max-width: 37.5em) {
     .heading-sekundarni {
-      font-size: 2.5rem; } }
+      font-size: 1.5rem; } }
 
 .heading-ternarni {
   font-size: 1.6rem;
@@ -170,25 +179,24 @@ body {
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
+  padding: 1.2rem 3rem;
   display: inline-block;
-  border-radius: 10rem;
+  background-color: #783030;
+  color: #f0f0f0;
   transition: all .2s;
   position: relative;
   font-size: 1.6rem;
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   border: none;
   cursor: pointer; }
 
 .btn:hover {
   transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
+  box-shadow: 1 0.5rem 0.7rem rgba(0, 0, 0, 0.5); }
 
 .btn:active, .btn:focus {
   outline: none;
-  transform: translateY(-0.1rem);
+  transform: translateY(0.1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--belo {
@@ -197,18 +205,39 @@ body {
   .btn--belo::after {
     background-color: #fff; }
 
+.header {
+  grid-column: fullBleed-start / fullBleed-end;
+  background-image: linear-gradient(rgba(25, 24, 24, 0.5), rgba(120, 48, 48, 0.5)), url(../img/athleteON-hero.jpg);
+  background-size: cover;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  @media only screen and (max-width: 56.25em) {
+    .header {
+      background-position: center; } }
+  .header__content {
+    grid-column: center-start / col-start 7;
+    align-self: center; }
+
+.services {
+  background-color: seagreen; }
+
 .container {
-  display: grid; }
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  .container__home {
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content); }
 
 .nav {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  background-color: #f0f0f0;
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   display: grid;
-  grid-template-columns: [fullBleed-start] minmax(8rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 10.5rem) [col-end]) [center-end] minmax(8rem, 1fr) [fullBleed-end]; }
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
   .nav__logo {
-    grid-column: center-start / col-end 1;
+    grid-column: center-start / col-end 2;
     font-size: 3rem; }
   .nav__menu {
     grid-column: 7 / center-end;
@@ -227,7 +256,7 @@ body {
   .nav__item {
     display: grid; }
     .nav__item:hover {
-      background-color: paleturquoise; }
+      background-color: #d8d8d8; }
   .nav__link {
     justify-self: center;
     align-self: center;
@@ -241,13 +270,14 @@ body {
   position: fixed;
   height: 100vh;
   width: 30vh;
-  background-color: palevioletred;
+  background-image: linear-gradient(rgba(240, 240, 240, 0.63), rgba(120, 48, 48, 0.63));
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   z-index: 100; }
   .nav-mobile__menu {
     display: grid;
     align-items: center; }
   .nav-mobile__item {
-    padding: 1rem 5rem;
+    padding: 1rem 7rem;
     font-size: 2rem; }
     .nav-mobile__item:hover {
-      background-color: peachpuff; }
+      background-color: #d8d8d8; }

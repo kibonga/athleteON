@@ -22,7 +22,7 @@
 }
 .mb-sm {margin-bottom: 1.5rem;}
 
-.mt-md {margin-top: 4rem;}
+.mt-md {margin-top: 5rem;}
 .mt-lg {margin-top: 8rem;}
 .mt-xl {margin-top: 10rem;}
 
@@ -46,6 +46,7 @@
     right: 0;
     background-image: linear-gradient(rgba(#333, .63), rgba(#333, .63));
     height: 100%;
+    z-index: 80;
 }
 
 

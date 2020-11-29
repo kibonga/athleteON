@@ -30,11 +30,11 @@
 @mixin fullBleed {
     grid-template-columns: 
         [fullBleed-start]
-        minmax(8rem, 1fr)
+        minmax(7rem, 1fr)
         [center-start]
-        repeat(10, [col-start] minmax(min-content, 10.5rem) [col-end])
+        repeat(10, [col-start] minmax(min-content, 11rem) [col-end])
         [center-end]
-        minmax(8rem, 1fr)
+        minmax(7rem, 1fr)
         [fullBleed-end]
     ;
 }
@@ -47,4 +47,13 @@
 @mixin gridSelfCenter {
     justify-self: center;
     align-self: center;
+}
+
+
+// Box-Shadow
+@mixin box-shadow-1 {
+    box-shadow: 0 .3rem .4rem (rgba(#000, .5));
+}
+@mixin box-shadow-2 {
+    box-shadow: 1 .5rem .7rem (rgba(#000, .5));
 }

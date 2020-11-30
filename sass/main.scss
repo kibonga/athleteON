@@ -16,7 +16,15 @@
 
 
 // Organizacija
+@import "organizacija/header";
+@import "organizacija/services";
+@import "organizacija/banner-1";
+@import "organizacija/programs";
+@import "organizacija/programsModal";
+@import "organizacija/reviews";
 @import "organizacija/footer";
+
 @import "organizacija/grid";
+
 @import "organizacija/nav";
 @import "organizacija/navMobile";

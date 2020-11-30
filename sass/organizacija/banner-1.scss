@@ -1,0 +1,95 @@
+
+.banner-1 {
+    // background-color: beige;
+    grid-column: fullBleed-start / fullBleed-end;
+
+    display: grid;
+    @include fullBleed;
+
+    @include respond(tablet-sm) {
+        grid-template-rows: 1fr 30vw;
+    }
+
+    &__left {
+        grid-column: fullBleed-start / col-start 6;
+        background-color: cadetblue;
+        
+        position: relative;
+
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .5)), url('../../img/athlete-2.jpg');
+        background-position: center;
+        background-size: cover;
+        @include respond(tablet-sm) {
+            grid-column: 1 / -1;
+            order: 2;
+        }
+    }
+
+    &__img-placeholder {
+        width: 55%;
+        position: absolute;
+        &--1 {
+            top: 15%;
+            left: 30%;
+        }
+        &--2 {
+            top: 40%;
+            left: 50%;
+        }
+        &:hover {
+            z-index: 20;
+        }
+        @include respond(tablet-sm) {
+            display: none;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        display: block;
+
+        transition: all .2s ease;
+        cursor: pointer;
+        filter: blur(.15rem) brightness(70%);
+        &:hover {
+            transform: scale(1.1);
+            z-index: 200;
+            filter: blur(0) brightness(80%);
+        }
+        
+    }
+
+    &__right {
+        background-color: rgba($osnovna, .5);
+        grid-column:  col-start 6 / fullBleed-end;
+
+        display: grid;
+        @include respond(tablet-sm) {
+            grid-column: 1 / -1;
+            order: 1;
+        }
+    }
+
+    &__content {
+        // background-color: salmon;
+        display: grid;
+        grid-template-rows: repeat(4, min-content);
+        padding: 18%;
+        align-content: center;
+        @include respond(tablet-sm) {
+            padding: 7vh;
+        }
+        
+    }
+
+    &__btn, &__heading {
+        justify-self: start;
+    }
+
+    &__btn {
+        margin-top: 2rem;
+    }
+    p {
+        font-size: $normalan-font;
+    }
+}

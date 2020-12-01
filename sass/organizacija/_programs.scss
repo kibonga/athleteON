@@ -1,0 +1,80 @@
+
+.programs {
+    grid-column: center-start / center-end;
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        column-gap: 5vh;
+        row-gap: 7vh;
+    }
+
+    &__card {
+        display: grid;
+        background-color: $siva-blaga-1;
+        @include box-shadow-1;
+    }
+    &__head {
+        display: grid;
+        position: relative;
+    }
+    &__img-placholder {
+        overflow: hidden;
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .5)), url('../../img/athlete-2.jpg');
+    }
+    &__img {
+        width: 100%;
+        display: block;
+
+        transition: all .2s ease;
+        filter: brightness(80%);
+        cursor: pointer;
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .5)), url('../../img/athlete-2.jpg');
+        &:hover {
+            // transform: scale(1);
+            filter: blur(.2rem) brightness(80%);
+        }
+    }
+
+
+    &__body {
+        padding: 3rem 2.3rem;
+        
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5rem;
+        
+        & > * {
+            display: grid;
+            transition: all .2s ease;
+            // cursor: pointer;
+            @include box-shadow-1;
+            &:hover {
+                // @include box-shadow-1;
+                background-color: $osnovna;
+            }
+        }
+    }
+    &__heading {
+        position: absolute;
+        background-image: linear-gradient(rgba($siva-blaga-1, .8), rgba($siva-blaga-1, .8));
+        padding: 1.2rem 2.3rem;
+        bottom: -1rem;
+        @include box-shadow-1;
+    }
+    span {
+        @include gridSelfCenter;
+        padding: 1.2rem 2.3rem;
+    }
+    h5 {
+        font-size: $normalan-font;
+        @include gridSelfCenter;
+    }
+    &__footer {
+        display: grid;
+        & > * {
+            @include gridSelfCenter;
+        }
+    }
+}

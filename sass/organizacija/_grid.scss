@@ -1,0 +1,21 @@
+
+
+.container {
+    display: grid;
+    @include fullBleed;
+    &__home {
+        grid-template-rows: 80vh min-content minmax(40vw, max-content) min-content;
+    }
+    &__about {
+
+    }
+    &__programs {
+
+    }
+    &__contact {
+
+    }
+    &__author {
+
+    }
+}

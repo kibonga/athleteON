@@ -1,0 +1,95 @@
+
+
+.programs-modal {
+    &__card {
+        width: 60%;
+        @include absoluteCenter;
+        display: grid;
+        grid-template-rows: 35vh min-content;
+        @include box-shadow-1;
+        @include respond(tablet-sm) {
+            width: 75%;
+        }
+        @media only screen and(max-width: 500px) {
+            width: 85%;
+        }
+        background-color: $osnovna;
+    }
+    &__header {
+        // background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-4.jpg');
+        background-position: center;
+        background-size: cover;
+        display: grid;
+        justify-items: start;
+        align-items: center;
+        padding-left: 5vw;
+    }
+    &__body {
+        padding: 3vw 5vw;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min-content, max-content));
+    }
+    &__text {
+        margin: 2vw 0;
+        font-size: $normalan-font;
+        @media only screen and(max-width: 500px) {
+            margin: 5vw 0;
+            font-size: 1.2rem;
+        }
+    }
+    &__info {
+        display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(min-content, 10vw) );
+        row-gap: 1rem;
+        font-size: $normalan-font;
+        & > * {
+            display: grid;
+            grid-template-columns: min-content max-content;
+            align-items: center;
+            column-gap: 1.5rem;
+        }
+        span {
+            color: $crna;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        @media only screen and(max-width: 500px) {
+            padding: .2rem .6rem;
+            transform: scale(.8);
+        }
+        display: inline-block;
+        @include box-shadow-1;
+        background-color: $bela;
+        color: $crna;
+        padding: .5rem 1rem;
+        cursor: pointer;
+    }
+    &__footer {
+        padding-bottom: 3vw;
+        padding-left: 5vw;
+    }
+
+    &__img--1 {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-1.jpg');
+    }
+    &__img--2 {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-2.jpg');
+    }
+    &__img--3 {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-3.jpg');
+    }
+    &__img--4 {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-4.jpg');
+    }
+    &__img--5 {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-5.jpg');
+    }
+    &__img--6 {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-6.jpg');
+    }
+
+}

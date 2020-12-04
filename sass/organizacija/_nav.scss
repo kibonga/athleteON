@@ -1,0 +1,57 @@
+
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $osnovna;
+    @include box-shadow-1;
+
+    display: grid;
+    @include fullBleed;
+
+    &__logo {
+        grid-column: center-start / col-end 2;
+        font-size: 3rem;
+    }
+
+    &__menu {
+        grid-column:  7 / center-end;
+        display: grid;
+        justify-content: end;
+        grid-template-columns: repeat(5,  minmax(min-content, 1fr));
+    }
+
+    &__hamburger {
+        align-self: center;
+
+            grid-column: 5 / 6;
+            justify-self: end;
+
+            font-size: 2.5rem;
+
+        cursor: pointer;
+
+        @media only screen and(min-width: 850px) {
+            display: none;
+        }
+    }
+
+    &__item {
+        display: grid;
+        &:hover {
+            background-color: $osnovna-tamna-1;
+        }
+    }
+
+    &__link {
+        @include gridSelfCenter;
+        font-size: 1.5rem;
+        display: none;
+        @media only screen and(min-width: 850px) {
+            display: block;
+        }
+    }
+
+}

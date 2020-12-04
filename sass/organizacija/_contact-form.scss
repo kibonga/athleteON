@@ -1,0 +1,116 @@
+
+
+.contact-form {
+    grid-column: center-start / center-end;
+    display: grid;
+    margin-bottom: 40rem;
+
+    &__wrapper {
+        display: grid;
+        // background-color: darkcyan;
+        grid-template-columns: 1.6fr 2fr;
+        @include box-shadow-1;
+        @include respond(tablet-sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__hero {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .5)), url('../img/athlete-2.jpg');
+        background-size: cover;
+        
+        @include respond(tablet-sm) {
+            height: 20vw;
+        }
+    }
+}
+
+
+.form {
+    grid-template-columns: min-content;
+    padding: 1.2rem 2.3rem;
+
+    &__control {
+        display: grid;
+        position: relative;
+        margin-top: .5rem;
+        &:last-of-type {
+            margin-top: 2rem;
+        }
+    }
+
+    &__options {
+        display: grid;
+        grid-template-columns: repeat(2, min-content);
+        column-gap: 1rem;
+    }
+
+    &__options-label {
+        font-size: $normalan-font;
+    }
+
+    &__radio, &__checkbox, &__submit {
+        justify-self: start;
+        transition: all .2s ease;
+    }
+
+    &__label {
+        font-size: $normalan-font;
+        @media only screen and(max-width: 550px) {
+            font-size: 1.3rem;
+        }
+    }
+    &__text, &__date, &__email {
+        font-size: $normalan-font;
+        padding: .6rem 1rem;
+        transition: all .2s ease;
+        &:focus {
+            transform: scale(1.05);
+        }
+    }
+
+    &__submit {
+        font-size: 1rem;
+    }
+    &__message {
+        // transform: translateX(5rem);
+        transition: all .2s ease;
+    }
+    &__icon {
+        position: absolute;
+        right: 1rem;
+        top: 3.1rem;
+        transform: scale(.7);
+        
+        @media only screen and(max-width: 550px) {
+            transform: scale(.65);
+            top: 2.4rem;
+        }
+    }
+    .success > span {
+        color: rgb(22, 82, 22);
+    }
+    .succes &__message {
+        transition: all .2s ease;
+        transform: translateX(0);
+    }
+    .error span {
+        color: $specijal;
+    }
+    .error &__message {
+        transition: all .2s ease;
+        transform: translateX(0);
+    }
+}
+input[type=checkbox], input[type=radio] {
+    vertical-align: middle;
+    position: relative;
+    bottom: -.7rem;
+}
+
+@-moz-document url-prefix() {
+    input[type=checkbox], input[type=radio] {
+        bottom: 0rem;
+    }
+  }
+
+

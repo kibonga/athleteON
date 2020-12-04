@@ -18,7 +18,8 @@ html {
       font-size: 75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden; }
 
 ul {
   list-style-type: none; }
@@ -50,7 +51,7 @@ a {
   margin-bottom: 1.5rem; }
 
 .mt-md {
-  margin-top: 4rem; }
+  margin-top: 5rem; }
 
 .mt-lg {
   margin-top: 8rem; }
@@ -71,7 +72,8 @@ a {
   bottom: 0;
   right: 0;
   background-image: linear-gradient(rgba(51, 51, 51, 0.63), rgba(51, 51, 51, 0.63));
-  height: 100%; }
+  height: 100vh;
+  z-index: 80; }
 
 .left {
   transition: all .4s ease;
@@ -118,46 +120,63 @@ body {
 
 .heading-primarni {
   color: #fff;
-  text-transform: uppercase;
   backface-visibility: hidden;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
   overflow: hidden;
   font-size: 3.5rem; }
   .heading-primarni--glavni {
     display: block;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: 400;
-    letter-spacing: 3.5rem;
+    letter-spacing: 1rem;
     animation: pomeriLevo 1s ease-out; }
     @media only screen and (max-width: 37.5em) {
       .heading-primarni--glavni {
         letter-spacing: 1rem;
-        font-size: 5rem; } }
+        font-size: 3rem; } }
   .heading-primarni--dopunski {
-    display: block;
-    font-size: 2rem;
+    letter-spacing: 1rem;
+    animation: pomeriDesno 1s ease-out;
+    color: #999;
+    font-size: 1.5rem;
+    text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 1.75rem;
     animation: pomeriDesno 1s ease-out; }
     @media only screen and (max-width: 37.5em) {
       .heading-primarni--dopunski {
-        letter-spacing: .5rem; } }
+        letter-spacing: .5rem;
+        font-size: 1rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .heading-primarni--dopunski {
+        font-size: 1.7rem; } }
+  .heading-primarni span {
+    text-transform: uppercase;
+    color: #783030;
+    font-weight: 700;
+    font-size: 5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primarni span {
+        font-size: 4rem; } }
 
 .heading-sekundarni {
-  font-size: 3.5rem;
+  color: #393737;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 700;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.5);
+  padding: 1.2rem 2.4rem;
   display: inline-block;
-  -webkit-background-clip: text;
-  color: transparent;
-  letter-spacing: 2px;
+  letter-spacing: .2rem;
   transition: all .2s; }
+  .heading-sekundarni span {
+    color: #783030; }
   @media only screen and (max-width: 56.25em) {
     .heading-sekundarni {
-      font-size: 3rem; } }
+      font-size: 1.7rem; } }
   @media only screen and (max-width: 37.5em) {
     .heading-sekundarni {
-      font-size: 2.5rem; } }
+      font-size: 1.5rem; } }
 
 .heading-ternarni {
   font-size: 1.6rem;
@@ -170,45 +189,545 @@ body {
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
+  padding: 1.2rem 2.3rem;
   display: inline-block;
-  border-radius: 10rem;
+  background-color: #783030;
+  color: #f0f0f0;
   transition: all .2s;
   position: relative;
   font-size: 1.6rem;
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   border: none;
   cursor: pointer; }
 
 .btn:hover {
   transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
+  box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.5); }
 
 .btn:active, .btn:focus {
   outline: none;
-  transform: translateY(-0.1rem);
+  transform: translateY(0.1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-.btn--belo {
+.btn--scale:hover {
+  transform: scale(1.05);
+  background-color: #f0f0f0;
+  color: #783030; }
+
+@media only screen and (max-width: 500px) {
+  .btn--modal {
+    font-size: 1rem !important; } }
+
+.header {
+  grid-column: fullBleed-start / fullBleed-end;
+  background-image: linear-gradient(rgba(25, 24, 24, 0.5), rgba(120, 48, 48, 0.5)), url(../img/athleteON-hero.jpg);
+  background-size: cover;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  @media only screen and (max-width: 56.25em) {
+    .header {
+      background-position: center; } }
+  .header__content {
+    grid-column: center-start / col-start 7;
+    align-self: center; }
+
+.services {
+  grid-column: center-start / center-end; }
+  .services__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 6rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); }
+  .services__card {
+    display: grid;
+    transition: all .2s ease;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
+    padding: 1.2rem 2.3rem; }
+    @media only screen and (min-width: 1044px) {
+      .services__card:last-child {
+        display: none; } }
+    .services__card:hover {
+      transform: translateY(-1rem);
+      box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.5); }
+  .services__icon {
+    color: #000; }
+  .services__card-heading {
+    font-size: 1.5rem; }
+  .services p {
+    font-size: 1.6rem; }
+
+.banner-1 {
+  grid-column: fullBleed-start / fullBleed-end;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  @media only screen and (max-width: 56.25em) {
+    .banner-1 {
+      grid-template-rows: 1fr 30vw; } }
+  .banner-1__left {
+    grid-column: fullBleed-start / col-start 6;
+    background-color: cadetblue;
+    position: relative;
+    background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.5)), url("../img/athlete-2.jpg");
+    background-position: center;
+    background-size: cover; }
+    @media only screen and (max-width: 56.25em) {
+      .banner-1__left {
+        grid-column: 1 / -1;
+        order: 2; } }
+  .banner-1__img-placeholder {
+    width: 55%;
+    position: absolute; }
+    .banner-1__img-placeholder--1 {
+      top: 15%;
+      left: 30%; }
+    .banner-1__img-placeholder--2 {
+      top: 40%;
+      left: 50%; }
+    .banner-1__img-placeholder:hover {
+      z-index: 20; }
+    @media only screen and (max-width: 56.25em) {
+      .banner-1__img-placeholder {
+        display: none; } }
+  .banner-1__img {
+    width: 100%;
+    display: block;
+    transition: all .2s ease;
+    cursor: pointer;
+    filter: blur(0.15rem) brightness(70%); }
+    .banner-1__img:hover {
+      transform: scale(1.1);
+      z-index: 200;
+      filter: blur(0) brightness(80%); }
+  .banner-1__right {
+    background-color: rgba(240, 240, 240, 0.5);
+    grid-column: col-start 6 / fullBleed-end;
+    display: grid; }
+    @media only screen and (max-width: 56.25em) {
+      .banner-1__right {
+        grid-column: 1 / -1;
+        order: 1; } }
+  .banner-1__content {
+    display: grid;
+    grid-template-rows: repeat(4, min-content);
+    padding: 18%;
+    align-content: center; }
+    @media only screen and (max-width: 56.25em) {
+      .banner-1__content {
+        padding: 7vh; } }
+  .banner-1__btn, .banner-1__heading {
+    justify-self: start; }
+  .banner-1__btn {
+    margin-top: 2rem; }
+  .banner-1 p {
+    font-size: 1.6rem; }
+
+.programs {
+  grid-column: center-start / center-end; }
+  .programs__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    column-gap: 5vh;
+    row-gap: 7vh; }
+  .programs__card {
+    display: grid;
+    background-color: #f7f7f7;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+  .programs__head {
+    display: grid;
+    position: relative; }
+  .programs__img-placholder {
+    overflow: hidden;
+    background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.5)), url("../../img/athlete-2.jpg"); }
+  .programs__img {
+    width: 100%;
+    display: block;
+    transition: all .2s ease;
+    filter: brightness(80%);
+    cursor: pointer;
+    background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.5)), url("../../img/athlete-2.jpg"); }
+    .programs__img:hover {
+      filter: blur(0.2rem) brightness(80%); }
+  .programs__body {
+    padding: 3rem 2.3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem; }
+    .programs__body > * {
+      display: grid;
+      transition: all .2s ease;
+      box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+      .programs__body > *:hover {
+        background-color: #f0f0f0; }
+  .programs__heading {
+    position: absolute;
+    background-image: linear-gradient(rgba(247, 247, 247, 0.8), rgba(247, 247, 247, 0.8));
+    padding: 1.2rem 2.3rem;
+    bottom: -1rem;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+  .programs span {
+    justify-self: center;
+    align-self: center;
+    padding: 1.2rem 2.3rem; }
+  .programs h5 {
+    font-size: 1.6rem;
+    justify-self: center;
+    align-self: center; }
+  .programs__footer {
+    display: grid; }
+    .programs__footer > * {
+      justify-self: center;
+      align-self: center; }
+
+.programs-modal__card {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-rows: 35vh min-content;
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
+  background-color: #f0f0f0; }
+  @media only screen and (max-width: 56.25em) {
+    .programs-modal__card {
+      width: 75%; } }
+  @media only screen and (max-width: 500px) {
+    .programs-modal__card {
+      width: 85%; } }
+
+.programs-modal__header {
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  padding-left: 5vw; }
+
+.programs-modal__body {
+  padding: 3vw 5vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, max-content)); }
+
+.programs-modal__text {
+  margin: 2vw 0;
+  font-size: 1.6rem; }
+  @media only screen and (max-width: 500px) {
+    .programs-modal__text {
+      margin: 5vw 0;
+      font-size: 1.2rem; } }
+
+.programs-modal__info {
+  display: grid;
+  row-gap: 1rem;
+  font-size: 1.6rem; }
+  .programs-modal__info > * {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    align-items: center;
+    column-gap: 1.5rem; }
+  .programs-modal__info span {
+    color: #000; }
+
+.programs-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: inline-block;
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   background-color: #fff;
-  color: #777; }
-  .btn--belo::after {
-    background-color: #fff; }
+  color: #000;
+  padding: .5rem 1rem;
+  cursor: pointer; }
+  @media only screen and (max-width: 500px) {
+    .programs-modal__close {
+      padding: .2rem .6rem;
+      transform: scale(0.8); } }
+
+.programs-modal__footer {
+  padding-bottom: 3vw;
+  padding-left: 5vw; }
+
+.programs-modal__img--1 {
+  background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.7)), url("../img/athlete-1.jpg"); }
+
+.programs-modal__img--2 {
+  background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.7)), url("../img/athlete-2.jpg"); }
+
+.programs-modal__img--3 {
+  background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.7)), url("../img/athlete-3.jpg"); }
+
+.programs-modal__img--4 {
+  background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.7)), url("../img/athlete-4.jpg"); }
+
+.programs-modal__img--5 {
+  background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.7)), url("../img/athlete-5.jpg"); }
+
+.programs-modal__img--6 {
+  background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.7)), url("../img/athlete-6.jpg"); }
+
+.reviews {
+  background-color: #f0f0f0;
+  grid-column: fullBleed-start / fullBleed-end;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  .reviews__wrapper {
+    grid-column: center-start / center-end;
+    position: relative; }
+  .reviews__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 5rem; }
+    @media only screen and (max-width: 56.25em) {
+      .reviews__cards {
+        column-gap: 5rem; } }
+    @media only screen and (max-width: 450px) {
+      .reviews__cards {
+        grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); } }
+  .reviews__card {
+    display: grid;
+    row-gap: 1.2rem;
+    background-color: #fff;
+    position: relative;
+    padding: 1.2rem 2.3rem;
+    transition: all .2s ease; }
+    .reviews__card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+    .reviews__card--1 {
+      animation: pomeriLevo .2s; }
+    .reviews__card--2 {
+      animation: pomeriDesno .2s; }
+  .reviews__text {
+    font-size: 1.6rem; }
+  .reviews__footer {
+    display: grid;
+    grid-template-columns: min-content 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    column-gap: 1.5rem; }
+    @media only screen and (max-width: 450px) {
+      .reviews__footer {
+        column-gap: 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr); } }
+  .reviews__img {
+    width: 100%;
+    display: block;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%; }
+  .reviews__name {
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #777;
+    font-size: 1.4rem;
+    font-weight: 700; }
+  .reviews__date {
+    font-size: 1.2rem; }
+  .reviews__grade {
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    color: #783030;
+    font-size: 1.6rem;
+    display: grid;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-content: center;
+    font-weight: 700; }
+  .reviews__quote {
+    position: absolute;
+    color: #783030;
+    transform: scale(1.7); }
+  .reviews__back {
+    left: -5rem; }
+  .reviews__forward {
+    right: -5rem; }
+  .reviews__back, .reviews__forward {
+    color: #783030;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 60%;
+    transition: all .2s ease;
+    cursor: pointer; }
+    .reviews__back:hover, .reviews__forward:hover {
+      transform: scale(1.3); }
+    @media only screen and (max-width: 791px) {
+      .reviews__back, .reviews__forward {
+        top: 56%; } }
+    @media only screen and (max-width: 450px) {
+      .reviews__back, .reviews__forward {
+        top: 53%; } }
+
+.footer {
+  background-color: #999;
+  grid-column: fullBleed-start / fullBleed-end;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end];
+  color: #fff;
+  font-size: 1.6rem; }
+  .footer > * {
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end];
+    padding: 2.3rem; }
+  .footer__head {
+    background-color: #a8a8a8; }
+  .footer__body {
+    background-color: #f0f0f0;
+    color: #000; }
+  .footer__footer {
+    background-color: #d8d8d8;
+    color: #777; }
+  .footer__head-content, .footer__body-content, .footer__footer-content {
+    grid-column: center-start / center-end;
+    display: grid;
+    grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end];
+    margin: 1.2rem 2.3rem; }
+  .footer__head-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    row-gap: 2rem; }
+    @media only screen and (max-width: 600px) {
+      .footer__head-content {
+        grid-template-columns: 1fr; } }
+  .footer__social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    justify-self: center; }
+    .footer__social-links a {
+      color: #fff; }
+      .footer__social-links a:hover {
+        color: #f0f0f0; }
+    @media only screen and (max-width: 600px) {
+      .footer__social-links {
+        justify-self: start; } }
+  .footer__body-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 2fr;
+    gap: 5rem; }
+    @media only screen and (max-width: 750px) {
+      .footer__body-content {
+        grid-template-columns: 2fr 1fr; } }
+    @media only screen and (max-width: 550px) {
+      .footer__body-content {
+        grid-template-columns: 1fr; } }
+  .footer__contact-info {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 1rem; }
+  .footer__contact-icon {
+    transform: scale(0.7) translateX(-0.5rem);
+    justify-self: start;
+    display: inline-block; }
+  .footer__footer-content {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+    text-align: center; }
+  .footer__footer-date {
+    padding: 0 10rem;
+    display: inline-block; }
+
+.contact-form {
+  grid-column: center-start / center-end;
+  display: grid;
+  margin-bottom: 40rem; }
+  .contact-form__wrapper {
+    display: grid;
+    grid-template-columns: 1.6fr 2fr;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+    @media only screen and (max-width: 56.25em) {
+      .contact-form__wrapper {
+        grid-template-columns: 1fr; } }
+  .contact-form__hero {
+    background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.5)), url("../img/athlete-2.jpg");
+    background-size: cover; }
+    @media only screen and (max-width: 56.25em) {
+      .contact-form__hero {
+        height: 20vw; } }
+
+.form {
+  grid-template-columns: min-content;
+  padding: 1.2rem 2.3rem; }
+  .form__control {
+    display: grid;
+    position: relative;
+    margin-top: .5rem; }
+    .form__control:last-of-type {
+      margin-top: 2rem; }
+  .form__options {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    column-gap: 1rem; }
+  .form__options-label {
+    font-size: 1.6rem; }
+  .form__radio, .form__checkbox, .form__submit {
+    justify-self: start;
+    transition: all .2s ease; }
+  .form__label {
+    font-size: 1.6rem; }
+    @media only screen and (max-width: 550px) {
+      .form__label {
+        font-size: 1.3rem; } }
+  .form__text, .form__date, .form__email {
+    font-size: 1.6rem;
+    padding: .6rem 1rem;
+    transition: all .2s ease; }
+    .form__text:focus, .form__date:focus, .form__email:focus {
+      transform: scale(1.05); }
+  .form__submit {
+    font-size: 1rem; }
+  .form__message {
+    transition: all .2s ease; }
+  .form__icon {
+    position: absolute;
+    right: 1rem;
+    top: 3.1rem;
+    transform: scale(0.7); }
+    @media only screen and (max-width: 550px) {
+      .form__icon {
+        transform: scale(0.65);
+        top: 2.4rem; } }
+  .form .success > span {
+    color: #165216; }
+  .succes .form__message {
+    transition: all .2s ease;
+    transform: translateX(0); }
+  .form .error span {
+    color: #783030; }
+  .error .form__message {
+    transition: all .2s ease;
+    transform: translateX(0); }
+
+input[type=checkbox], input[type=radio] {
+  vertical-align: middle;
+  position: relative;
+  bottom: -.7rem; }
+
+@-moz-document url-prefix() {
+  input[type=checkbox], input[type=radio] {
+    bottom: 0rem; } }
 
 .container {
-  display: grid; }
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  .container__home {
+    grid-template-rows: 80vh min-content minmax(40vw, max-content) repeat(4, min-content); }
 
 .nav {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  background-color: #f0f0f0;
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   display: grid;
-  grid-template-columns: [fullBleed-start] minmax(8rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 10.5rem) [col-end]) [center-end] minmax(8rem, 1fr) [fullBleed-end]; }
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
   .nav__logo {
-    grid-column: center-start / col-end 1;
+    grid-column: center-start / col-end 2;
     font-size: 3rem; }
   .nav__menu {
     grid-column: 7 / center-end;
@@ -227,7 +746,7 @@ body {
   .nav__item {
     display: grid; }
     .nav__item:hover {
-      background-color: paleturquoise; }
+      background-color: #d8d8d8; }
   .nav__link {
     justify-self: center;
     align-self: center;
@@ -241,13 +760,14 @@ body {
   position: fixed;
   height: 100vh;
   width: 30vh;
-  background-color: palevioletred;
+  background-image: linear-gradient(rgba(240, 240, 240, 0.7), #f0f0f0);
+  box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   z-index: 100; }
   .nav-mobile__menu {
     display: grid;
     align-items: center; }
   .nav-mobile__item {
-    padding: 1rem 5rem;
+    padding: 1rem 7rem;
     font-size: 2rem; }
     .nav-mobile__item:hover {
-      background-color: peachpuff; }
+      background-color: #d8d8d8; }

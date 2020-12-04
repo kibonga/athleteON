@@ -1,0 +1,101 @@
+.footer {
+    background-color: $siva-tamna-1;
+    
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    @include fullBleed;
+    color: $bela;
+    font-size: $normalan-font;
+
+
+    & > * {
+        grid-column: fullBleed-start / fullBleed-end;
+        display: grid;
+        @include fullBleed;
+        padding: 2.3rem;
+        
+    }
+
+    &__head {
+        background-color: $osnovna-tamna-2;
+    }
+    &__body {
+        background-color: $osnovna;
+        color: $crna;
+    }
+    &__footer {
+        background-color: $osnovna-tamna-1;
+        color: $siva;
+    }
+    &__head-content, &__body-content, &__footer-content  {
+        grid-column: center-start / center-end;
+        display: grid;
+        @include fullBleed;
+        margin: 1.2rem 2.3rem;
+        
+    }
+    &__head-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        row-gap: 2rem;
+        @media only screen and(max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__social-text {
+        
+    }
+    &__social-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 1fr);
+        justify-self: center;
+        a {
+            
+            color: $bela;
+            &:hover {
+                color: $osnovna;
+            }
+        }
+        @media only screen and(max-width: 600px) {
+            justify-self: start;
+        }
+        
+    }
+    &__body-content {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 2fr;
+        gap: 5rem;
+        @media only screen and(max-width: 750px) {
+            grid-template-columns: 2fr 1fr;
+        }
+        @media only screen and(max-width: 550px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__contact-info {
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        column-gap: 1rem;
+    }
+    &__contact-icon {
+        transform: scale(.7) translateX(-.5rem);
+        justify-self: start;
+        display: inline-block;
+    }
+
+    &__footer-content {
+        display: flex;
+        justify-content: center;
+        margin: 0 2rem;
+        text-align: center;
+    }
+    &__footer-date {
+        padding: 0 10rem;
+        display: inline-block;
+    }
+    
+
+
+
+}

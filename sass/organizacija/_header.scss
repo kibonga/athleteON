@@ -1,0 +1,21 @@
+
+
+.header {
+    grid-column: fullBleed-start / fullBleed-end;
+
+    background-image: linear-gradient(rgba($sekundarna-tamna, .5), rgba($specijal, .5)), url(../img/athleteON-hero.jpg);
+    background-size: cover;
+
+
+    display: grid;
+    @include fullBleed;
+
+    @include respond(tablet-sm) {
+        background-position: center;
+    }
+
+    &__content {
+        grid-column: center-start / col-start 7;
+        align-self: center;
+    }
+}

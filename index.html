@@ -5,27 +5,424 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>athleteON</title>
 </head>
-<body>
+<body class="container container__home">
     
     <div id='dark-overlay' class="dark-overlay d-none"></div>
-    <div id='nav-mobile' class="nav-mobile">
+    <div id='nav-mobile' class="nav-mobile"></div>
+    <nav id="nav" class="nav"></nav>
+
+
+    <header id="header" class="header mt-md">
+        <!-- <div class="header__content">
+            <h2 class="heading-primarni heading-primarni--dopunski">where athletes are made</h2>
+            <h1 class="heading-primarni heading-primarni--glavni">Turn Your athlete<span>ON</span></h1>
+            <button class="btn">Our Programs</button>
+        </div> -->
+    </header>
+
+    <section id="services" class="services mt-lg">
+        <!-- <h3 class="heading-sekundarni services__heading">Our Services</h3>
+        <div class="services__cards mt-md">
+            <div class="services__card">
+                <span class="material-icons services__icon">supervisor_account</span>
+                <h4 class="heading-ternarni services__card-heading">
+                    Worlds best coaches
+                </h4>
+                <p>Devlop Your athletic performance with the help of our excellent coaching Staff</p>
+            </div>
+            <div class="services__card">
+                <span class="material-icons services__icon">fitness_center</span>
+                <h4 class="heading-ternarni services__card-heading">
+                    Excellent Equipment
+                </h4>
+                <p>Devlop Your athletic performance with the help of our excellent coaching Staff</p>
+            </div>
+            <div class="services__card">
+                <span class="material-icons services__icon">sports_mma</span>
+                <h4 class="heading-ternarni services__card-heading">
+                    Training for any Sport
+                </h4>
+                <p>Devlop Your athletic performance with the help of our excellent coaching Staff</p>
+            </div>
+            <div class="services__card">
+                <span class="material-icons services__icon">self_improvement</span>
+                <h4 class="heading-ternarni services__card-heading">
+                    Injury Prevention
+                </h4>
+                <p>Devlop Your athletic performance with the help of our excellent coaching Staff</p>
+            </div>
+        </div> -->
+    </section>
+
+
+    <section class="banner-1 mt-lg" id="banner-1">
+        <div class="banner-1__left">
+            <div class="banner-1__img-placeholder banner-1__img-placeholder--1">
+                <img src="img/athlete-6.jpg" alt="athlete" class="banner-1__img">
+            </div>
+            <div class="banner-1__img-placeholder banner-1__img-placeholder--2">
+                <img src="img/athlete-3.jpg" alt="athlete" class="banner-1__img">
+            </div>
+        </div>
+        <div class="banner-1__right">
+            <div class="banner-1__content">
+                <h3 class="banner-1__heading heading-sekundarni">Healthy Athlete</h3>
+                <h4 class="heading-ternarni mt-md">Develop Your Athletic Body</h4>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae distinctio perspiciatis id consequatur provident, qui a quaerat sequi rem exercitationem eaque. Iusto repudiandae possimus quas.</p>
+                <a href="programs.html" class="banner-1__btn btn">Our Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="programs-modal" class="programs-modal dark-overlay d-none">
+        <!-- <div class="programs-modal__card">
+            <div class="programs-modal__header programs-modal__img--1">
+                <h3 class="heading-sekundarni heading-sekundarni--modal">Explosive <span>Athlete</span></h3>
+            </div>
+            <div class="programs-modal__body">
+                <h4 class="heading-ternarni">Explosive Athlete</h4>
+                <p class="programs-modal__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem possimus nam sunt at illum enim adipisci cum, laboriosam, dolorem atque odio eligendi officia veritatis dignissimos iste facilis blanditiis quo incidunt, temporibus nostrum deleniti repudiandae unde?</p>
+                <div class="programs-modal__info">
+                    <div class="programs__duaration">
+                        <span class="material-icons">date_range</span>
+                        <h5>6 weeks</h5>
+                    </div>
+                    <div class="programs__price">
+                        <span class="material-icons">local_atm</span>
+                        <h5>400.00</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="programs-modal__footer">
+                <a href="index.html" class="btn btn--scale btn--modal programs__btn">View More</a>
+            </div>
+            <span class="material-icons programs-modal__close md-18">cancel_presentation</span>
+        </div> -->
     </div>
 
-    <nav id="nav" class="nav">
-        <!-- <div class="nav__logo">
-            athleteON
+    <section id="programs" class="programs mt-lg">
+        <!-- <h3 class="heading-sekundarni">Our Programs</h3>
+
+        <div class="programs__cards mt-md">
+
+            <div class="programs__card">
+                <div class="programs__head">
+                    <div class="programs__img-placeholder">
+                        <img src="img/athlete-2.jpg" alt="" class="programs__img">
+                        <h3 class="heading-ternarni programs__heading">Explosive</h3>
+                    </div>
+                </div>
+    
+                <div class="programs__body">
+                    <div class="programs__duaration">
+                        <span class="material-icons">date_range</span>
+                        <h5>6 weeks</h5>
+                    </div>
+                    <div class="programs__price">
+                        <span class="material-icons">local_atm</span>
+                        <h5>400.00</h5>
+                    </div>
+                </div>
+    
+                <div class="programs__footer">
+                    <a href="index.html" class="btn btn--scale programs__btn">View More</a>
+                </div>
+            </div>
+            <div class="programs__card">
+                <div class="programs__head">
+                    <div class="programs__img-placeholder">
+                        <img src="img/athlete-2.jpg" alt="" class="programs__img">
+                        <h3 class="heading-ternarni programs__heading">Explosive</h3>
+                    </div>
+                </div>
+    
+                <div class="programs__body">
+                    <div class="programs__duaration">
+                        <span class="material-icons">date_range</span>
+                        <h5>6 weeks</h5>
+                    </div>
+                    <div class="programs__price">
+                        <span class="material-icons">local_atm</span>
+                        <h5>400.00</h5>
+                    </div>
+                </div>
+    
+                <div class="programs__footer">
+                    <a href="index.html" class="btn btn--scale programs__btn">View More</a>
+                </div>
+            </div>
+            <div class="programs__card">
+                <div class="programs__head">
+                    <div class="programs__img-placeholder">
+                        <img src="img/athlete-2.jpg" alt="" class="programs__img">
+                        <h3 class="heading-ternarni programs__heading">Explosive</h3>
+                    </div>
+                </div>
+    
+                <div class="programs__body">
+                    <div class="programs__duaration">
+                        <span class="material-icons">date_range</span>
+                        <h5>6 weeks</h5>
+                    </div>
+                    <div class="programs__price">
+                        <span class="material-icons">local_atm</span>
+                        <h5>400.00</h5>
+                    </div>
+                </div>
+    
+                <div class="programs__footer">
+                    <a href="index.html" class="btn btn--scale programs__btn">View More</a>
+                </div>
+            </div>
+
+        </div> --> 
+    </section>
+    <!--  -->
+
+
+
+
+
+
+    
+    <section id="reviews" class="reviews mt-lg">
+        <!-- <div class="reviews__wrapper mt-md mb-md">
+            <h3 class="heading-sekundarni reviwes__heading">Our Reviews</h3>
+            <div class="reviews__cards mt-md">
+                <div class="reviews__card reviews__card--1">
+                    <div class="reviews__body">
+                        <p class="reviews__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ratione aliquam reprehenderit maxime obcaecati quos assumenda quas reiciendis.</p>
+                    </div>
+                    <div class="reviews__footer">
+                        <div class="reviews__img-placeholder">
+                            <img src="img/user-1.jpg" alt="User" class="reviews__img">
+                        </div>
+                        <div class="reviews__info">
+                            <div class="reviews__name">Whitney Houston</div>
+                            <div class="reviews__date">Nov 30th, 2020</div>
+                        </div>
+                        <div class="reviews__grade">
+                            <span>8.9</span>
+                        </div>
+                    </div>
+                    <span class="reviews__quote material-icons">format_quote</span>
+                </div>
+                <div class="reviews__card reviews__card--2">
+                    <div class="reviews__body">
+                        <p class="reviews__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ratione aliquam reprehenderit maxime obcaecati quos assumenda quas reiciendis.</p>
+                    </div>
+                    <div class="reviews__footer">
+                        <div class="reviews__img-placeholder">
+                            <img src="img/user-2.jpg" alt="User" class="reviews__img">
+                        </div>
+                        <div class="reviews__info">
+                            <div class="reviews__name">Whitney Houston</div>
+                            <div class="reviews__date">Nov 30th, 2020</div>
+                        </div>
+                        <div class="reviews__grade">
+                            <span>8.9</span>
+                        </div>
+                    </div>
+                    <span class="reviews__quote material-icons">format_quote</span>
+                </div>
+
+            </div>
+            <span id="forthBtn" class="material-icons reviews__forward">arrow_forward_ios</span>
+            <span id="backBtn"" class="material-icons reviews__back">arrow_back_ios</span>
+        </div> -->
+    </section>
+
+
+
+
+    <section id="footer" class="footer mt-lg">
+        <!-- <div class="footer__head">
+            <div class="footer__head-content">
+                <h4 class="footer__social-text">Get connected with us on social networks!</h4>
+                <div class="footer__social-links">
+                    <span>
+                        <a href="https://facebook.com">facebook</a>
+                    </span>
+                    <span>
+                        <a href="https://twitter.com">twitter</a>
+                    </span>
+                    <span>
+                        <a href="https://youtube.com">youtube</a>
+                    </span>
+                    <span>
+                        <a href="https://instagram.com">instagram</a>
+                    </span>
+                </div>
+            </div>
         </div>
-        <ul class="nav__menu">
-            <li class="nav__item">
-                <a href="#" class="nav__link">Link</a>
-            </li>
-        </ul> -->
-    </nav>
+        <div class="footer__body ">
+            <div class="footer__body-content">
+                <div class="footer__company">
+                    <h4 class="footer__company-name heading-ternarni">athleteON</h4>
+                    <p class="company__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni tempora atque a dolor voluptas dolore, itaque facere, quisquam vitae ea in nobis aliquid distinctio quas?</p>
+                </div>
+                <div class="footer__navigation">
+                    <h4 class="footer__nav-name heading-ternarni">Other Nav</h4>
+                    <ul class="footer__nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="author.html">Author</a></li>
+                        <li><a href="docs.pdf">Docs</a></li>
+                    </ul>
+                </div>
+                <div class="footer__useful">
+                    <h4 class="footer__useful-links-name heading-ternarni">Useful links</h4>
+                    <ul class="footer__useful-links">
+                        <li><a href="#">Sitemap</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Github</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4 class="footer__contact-name heading-ternarni">Contact</h4>
+                    <div class="footer__contact-info">
+                        <span class="material-icons footer__contact-icon">
+                            home
+                        </span>
+                        <p class="footer__contact-text">Tosin Bunar bb, 4F</p>
+                    </div>
+                    <div class="footer__contact-info">
+                        <span class="material-icons footer__contact-icon">
+                            mail
+                        </span>
+                        <p class="footer__contact-text">athleteON@gmail.com</p>
+                    </div>
+                    <div class="footer__contact-info">
+                        <span class="material-icons footer__contact-icon">
+                            local_phone
+                        </span>
+                        <p class="footer__contact-text">+ 011 234 567 88</p>
+                    </div>
+                    <div class="footer__contact-info">
+                        <span class="material-icons footer__contact-icon">
+                            local_phone
+                        </span>
+                        <p class="footer__contact-text">+ 011 234 567 88</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__footer">
+            <p class="footer__footer-content">
+                &copy;&nbsp;<span id="footer__footer-date">2020</span>&nbsp;Copyright Pavle Djurdjic 7/19
+            </p>
+        </div> -->
+    </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <section id="contact-form" class="contact-form mt-lg">
+        <div class="contact-form__naslov">
+            <h3 class="heading-sekundarni">Contact Form</h3>
+        </div>
+        <div class="contact-form__wrapper mt-md">
+            <form  id="form" class="form ">
+                <div class="form__control error">
+                    <label for="fname" class="form__label">First Name</label>
+                    <input type="text" name="fname" id="tbFName" class="form__text">
+                    <span class="form__message"></span>
+                    <span class="material-icons form__icon"></span>
+                </div>
+                <div class="form__control">
+                    <label for="lname" class="form__label">Last Name</label>
+                    <input type="text" name="lname" id="tbLName" class="form__text">
+                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <span class="material-icons form__icon">report_problem</span>
+                </div>
+                <div class="form__control">
+                    <label for="dateBirth" class="form__label">Date of Birth</label>
+                    <input type="date" name="dateBirth" id="tbDateBirth" class="form__date">
+                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <span class="material-icons form__icon">report_problem</>
+                </div>
+                <div class="form__control">
+                    <label for="gender" class="form__label">Gender</label>
+                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <div class="form__options">
+                        <input type="radio" name="gender" value="male" class="form__radio">
+                        <label class="form__options-label">Male</label>
+                    </div>
+                    <div class="form__options">
+                        <input type="radio" name="gender" value="female" class="form__radio">
+                        <label class="form__options-label">Female</label>
+                    </div>
+                </div>
+                <div class="form__control">
+                    <label for="email" class="form__label">Email</label>
+                    <input type="email" name="email" id="tbEmail" class="form__email">
+                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <span class="material-icons form__icon">report_problem</>
+                </div>
+                <div class="form__control">
+                    <label for="checkbox" class="form__label">Pick Your Program</label>
+                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <div class="form__options">
+                        <input type="checkbox" name="ch1" value="explosive" class="form__checkbox">
+                        <label class="form__options-label">Explosive</label>
+                    </div>
+                    <div class="form__options">
+                        <input type="checkbox" name="ch2" value="flexible" class="form__checkobx">
+                        <label class="form__options-label">Flexible</label>
+                    </div>
+                    <div class="form__options">
+                        <input type="checkbox" name="ch3" value="strong" class="form__checkobx">
+                        <label class="form__options-label">Strong</label>
+                    </div>
+                    <div class="form__options">
+                        <input type="checkbox" name="ch4" value="fast" class="form__checkobx">
+                        <label class="form__options-label">Fast</label>
+                    </div>
+                    <div class="form__options">
+                        <input type="checkbox" name="ch5" value="conditioned" class="form__checkobx">
+                        <label class="form__options-label">Conditioned</label>
+                    </div>
+                    <div class="form__options">
+                        <input type="checkbox" name="ch6" value="functional" class="form__checkobx">
+                        <label class="form__options-label">Functional</label>
+                    </div>
+                </div>
+                <div class="form__control">
+                    <label for="submit" class="form__label">
+                        I confirm that the information given in this form is true
+                    </label>
+                    <input type="submit" name="btnSubmit" id="btnSubmit" value="Get Started" class="form__submit btn">
+                </div>
+            </form>
+            <div class="contact-form__hero">
+
+            </div>
+        </div>
+    </section>
+
+    
 
     
     <script src="js/nav.js"></script>

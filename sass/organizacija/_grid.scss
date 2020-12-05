@@ -7,7 +7,8 @@
         grid-template-rows: 80vh min-content minmax(40vw, max-content) repeat(4,min-content);
     }
     &__about {
-
+        grid-template-rows: 50vh min-content minmax(40vw, max-content) repeat(4,min-content);
+        // background-color: cornsilk;
     }
     &__programs {
 

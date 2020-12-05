@@ -4,12 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
     loadNav();
     loadHeader();
     loadServices();
-    loadPrograms();
-    loadReviews();
+    
     loadFooter();
-    loadContactForm();
+    
 
 
+
+    let location = window.location.pathname;
+    if(location.indexOf('index') != -1) {
+        console.log(location);
+        console.log("ovo je html strana");
+        console.log('usao sam i ovde');
+        loadPrograms();
+        loadReviews();
+        loadContactForm();
+    }
+    else if(location.indexOf('about') != -1) {
+        console.log('ovo je about strana');
+    }
+    console.log(location);
     
     
 
@@ -433,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
         back.addEventListener('click', () => {
             if(i <= 0) {
                 loadReviews(nizReviewsLeft.length - 1)
-                console.log(nizReviewsLeft.length - 1)
+                // console.log(nizReviewsLeft.length - 1)
             }
             else {
                 loadReviews(i-1)
@@ -549,27 +562,44 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadContactForm() {
 
         const form = document.getElementById('form');
-        console.log(form);
+        // console.log(form);
 
         const firstName = form.fname;
         const lastName = form.lname;
         const dateBirth = form.dateBirth;
         const email = form.email;
-        const gender = form.gender;
+        const submit = form.btnSubmit;
 
-        // firstName.addEventListener('focus', () => {
-        //     inFocus(firstName)
-        // })
-        // firstName.addEventListener('focusout', () => {
-        //     outFocus(firstName)
-        // })
+        const checkboxMessage = document.getElementById('checkboxMessage');
 
-        nizInFocus = new Array(firstName, lastName, dateBirth, email);
-        nizErrMsgEmpty = new Array('Name', 'Last Name', 'Birthday', 'Email');
-        nizErrMsgInvalid = new Array(`You probably just made a typo.
-        Remember, 3-15 letters is good enough`, 'Last Name', 'Birthday', 'Email');
+        const regName =  /^[A-ZČĆŽŠĐ][a-zčćžšđ]{2,15}$/;
+        const regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+        
 
-        nizInFocus.forEach((el, idx) => {
+        let message = null;
+        let icon = null;
+        let parent = null;
+
+
+        const  nizAllInputValues = new Array();
+        const nizInputs = new Array(firstName, lastName, dateBirth, email);
+        const nizMsg = new Array('Name', 'Last Name', 'Birthday', 'Email');
+        const nizErrMsg = new Array(
+            [`You probably just made a typo.
+        Remember, 3-15 letters is good enough`, '', 'Birthday', 'Email'],
+            [`Are you sure you are that old?`, `Sorry kiddo, You are too young to use credit card`],
+            [`Maybe you forgot something, see our example
+            eg. example@gmail.com`]
+            
+        );
+        const nizSuccMsg = new Array(
+            [`Thats a lovely`],
+            [`What a nice`],
+            [`We'll check on You for Your`],
+            ['Cool']
+        ); 
+
+        nizInputs.forEach((el, idx) => {
             el.addEventListener('focus', () => {
                 inFocus(el, idx);
             });
@@ -579,14 +609,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
         });
 
-        function inFocus(e, idx) {
 
-            const message = e.nextElementSibling;
-            const icon = e.nextElementSibling.nextElementSibling;
-            const parent = e.parentElement;
+        // Functions
+        function inFocus(e, idx) {
+            message = e.nextElementSibling;
+            icon = e.nextElementSibling.nextElementSibling;
+            parent = e.parentElement;
             if(!parent.classList.contains('success')) {
                 e.value = ``;
-                message.innerText = `Please, tell us Your ${nizErrMsgEmpty[idx]}`;
+                message.innerText = `Please, tell us Your ${nizMsg[idx]}`;
                 icon.innerText = ``;
                 parent.classList.remove('error');
             }
@@ -596,45 +627,200 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.innerText = ``;
             }
         }
-
         function outFocus(e, idx) {
-
-            const message = e.nextElementSibling;
-            const icon = e.nextElementSibling.nextElementSibling;
-            const parent = e.parentElement;
-
-            if(e == firstName || e == lastName ) {
-                if(e.value === '') {
-                    message.innerText = `Oops, seems You forogt to tell us Your ${nizErrMsgEmpty[idx]}`;
-                    parent.classList.add('error');
-                    icon.innerText = `report_problem`;
-                }
-                else if(e.value.length < 3 || e.value.length > 15) {
-                    message.innerText = `${nizErrMsgInvalid[0]}`;
-                    parent.classList.add('error');
-                    icon.innerText = `report_problem`;
-                }
-                else if(e.value != ``) {
-                    message.innerText = `That's a lovely ${nizErrMsgEmpty[idx]}`;
-                    icon.innerText = `done`;
-                    parent.classList.remove('error');
-                    parent.classList.add('success');
-                }
+            if(e.value === '') {
+                inputEmpty(e, idx);
             }
+            else if(e == firstName || e == lastName ) {
+                checkNameInvalid(e, idx);
+            }
+            else if(e == email) {
+                checkEmailInvalid(e, idx);
+            }
+            else if(e == dateBirth) {
+                checkDateInvalid(e, idx);
+            }
+        }
+        function checkNameInvalid(e, idx) {
+            //e.value.length < 3 || e.value.length > 15
+            // console.log(e.value);
+            // console.log(regName.test(e.value));
+            if(!regName.test(e.value)) {
+                message.innerText = `${nizErrMsg[0][0]}`;
+                parent.classList.add('error');
+                icon.innerText = `report_problem`;
+            }
+            else if(e.value != ``) {
+                validInput(e, idx);
+            }
+        }
+        function inputEmpty(e, idx) {
+            message.innerText = `Oops, seems You forogt to tell us Your ${nizMsg[idx]}`;
+            parent.classList.add('error');
+            icon.innerText = `report_problem`;
+        }    
+        function validInput(e, idx) {  
+            message.innerText = `${nizSuccMsg[idx]} ${nizMsg[idx]}`;
+            icon.innerText = `done`;
+            parent.classList.remove('error');
+            parent.classList.add('success');
+        }
+        function userOlder18(nizBirthElements) {
+            const date = new Date(nizBirthElements[0] + 16, nizBirthElements[1] - 1, nizBirthElements[2]);
+            const result = (date <= new Date());
+            return result;
+        }
+        function checkDateInvalid(e, idx) {
+            const nizUserBirthInput = dateBirth.value.split('-');
+            nizBirthElements = new Array();
             
-            
-
-            // e.parentElement.classList.add('error');
-            // e.nextElementSibling.innerText = `You probably just made a typo.
-            // Remember, 3-15 letters is good enough`;
-            // e.nextElementSibling.nextElementSibling.innerText = `report_problem`;
-            // e.parentElement.classList.add('success');
-            // e.nextElementSibling.innerText = `That's a lovely name`;
-            // e.nextElementSibling.nextElementSibling.innerText = `done`;
-                
+            for(let i=0; i<nizUserBirthInput.length; i++) {
+                nizBirthElements[i] = Number(nizUserBirthInput[i]);
+            }
+            if(nizBirthElements[0] < 1900) {
+                dateInvalid(0);
+            }
+            else if(!userOlder18(nizBirthElements)) {
+                dateInvalid(1);
+            }
+            else {
+                validInput(e, idx);
+            }
+        }
+        function dateInvalid(idx) {
+            message.innerText = `${nizErrMsg[1][idx]}`;
+            parent.classList.add('error');
+            icon.innerText = `report_problem`;
+        }
+        function checkEmailInvalid(e, idx) {
+            // console.log(e.value);
+            if(regEmail.test(e.value)) {
+                validInput(e, idx);
+            }
+            else if (!regEmail.test(e.value)){
+                emailInvalid();
+            }
+        }
+        function emailInvalid() {
+            message.innerText = `${nizErrMsg[2][0]}`;
+            parent.classList.add('error');
+            icon.innerText = `report_problem`;
         }
 
+        
+        
+        // console.log(checkboxMessage);
+
+        
+        submit.addEventListener('click', e => {
+            let countValidInputs = 0;
+
+            ///Checkboxes
+            const allCheckboxes = form.chProgram;
+            const nizCheckedValues = new Array();
+            
+            
+            // console.log(allCheckboxes);
+            let countCheckboxes = 0;
+            allCheckboxes.forEach(el => {
+                if(el.checked) {
+                    countCheckboxes++;
+                    nizCheckedValues.push(el.value);
+                    // console.log(nizCheckedValues);
+                }
+                else {
+                    // console.log('nije cekiran');
+                }
+            });
+            if(countCheckboxes === 0) {
+                checkboxesInvalid();
+            }
+            else {
+                checkboxMessage.innerText = ``;
+            }
+            function checkboxesInvalid() {
+                checkboxMessage.innerText = `You forgot the best part`;
+                checkboxMessage.style.color = '#783030';
+            }
+            if(nizCheckedValues.length === 0) {
+                checkboxesInvalid();
+            }
+            // console.log(nizCheckedValues);
+            //Checkboxes
+
+
+
+            nizInputs.forEach(el => {
+                // console.log(el.parentElement);
+                if(!el.parentElement.classList.contains('error') && (el.value != ``)) {
+                    // console.log('uslo u el');
+                    countValidInputs += 1;
+                }
+            })
+            if(nizInputs.length != countValidInputs) {
+                nizInputs.forEach(el => {
+                    if(el.value == ``) {
+                        el.parentElement.classList.add('error');
+                        el.nextElementSibling.innerText = ``;
+                        el.nextElementSibling.nextElementSibling.innerText = `report_problem`;
+                    }
+                });
+            }
+            // console.log(nizInputs.length, countValidInputs);
+            if(nizInputs.length == countValidInputs && nizCheckedValues.length >= 1) {
+                nizInputs.forEach(el => {
+                    nizAllInputValues.push(el.value);
+                    // console.log(nizAllInputValues);
+                    // Ovde proverava sve inpute
+                    el.value = ``;
+                    el.parentElement.classList.remove('success');
+                    el.nextElementSibling.innerText = ``;
+                    el.nextElementSibling.nextElementSibling.innerText = ``;
+                });
+            }
+            else {
+                // console.log('nije dobra forma');
+                nizInputs.forEach((e, idx) => {
+                    if(e.value == ``) {
+                        inputEmptySubmit(e, idx);
+                    }
+                });
+            }
+
+            if(nizInputs.length == countValidInputs && nizCheckedValues.length >= 1){
+                sendFinalValues(nizCheckedValues, nizAllInputValues);
+            }
+            
+
+
+
+        });
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+        })
+
+        function inputEmptySubmit(e, idx) {
+            e.nextElementSibling.innerText = `Oops, seems You forogt to tell us Your ${nizMsg[idx]}`;
+            e.parentElement.classList.add('error');
+            e.nextElementSibling.nextElementSibling.innerText = `report_problem`;
+        } 
+
+        function sendFinalValues(checked, input) {
+            console.log('Ovo su finalne vrednosti');
+            console.log(checked);
+            console.log(input);
+        }
+        
+        
+
+        
+
+
+    /// Kraj loadContactForm()      
     }
+        
+
+///Kraj Globalne Funkcije  
 })
 
 

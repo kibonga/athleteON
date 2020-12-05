@@ -12,7 +12,7 @@
         grid-column: fullBleed-start / fullBleed-end;
         display: grid;
         @include fullBleed;
-        padding: 2.3rem;
+        padding: 2.3rem 0;
         
     }
 
@@ -31,7 +31,6 @@
         grid-column: center-start / center-end;
         display: grid;
         @include fullBleed;
-        margin: 1.2rem 2.3rem;
         
     }
     &__head-content {

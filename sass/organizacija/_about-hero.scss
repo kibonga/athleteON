@@ -1,0 +1,34 @@
+
+
+.about-hero {
+    background-color: khaki;
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    @include fullBleed;
+    background-image: linear-gradient(rgba($crna, .2), rgba($specijal, .4)), url('../../img/athlete-4.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0;
+
+
+    &__content {
+        grid-column: center-start / col-end 5;
+
+        display: grid;
+        grid-column: center-start / col-start 5;
+        align-self: center;
+
+        @media only screen and(max-width: 600px) {
+            grid-column: center-start / col-start 8;
+        }
+        
+    }
+
+    &__heading {
+        justify-self: start;
+    }
+    p {
+        font-size: $normalan-font;
+        color: $bela;
+    }
+}

@@ -1,0 +1,54 @@
+
+.team {
+    // background-color: lavender;
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    @include fullBleed;
+
+    &__content {
+        grid-column: center-start / center-end;
+    }
+    // &__heading
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        column-gap: 5vh;
+        row-gap: 7vh;
+    }
+
+    &__card {
+        display: grid;
+        // background-color: $siva-blaga-1;
+        @include box-shadow-1;
+        transition: all .2s ease;
+        cursor: pointer;
+        &:hover {
+            transform: translateY(-1rem);
+        }
+    }
+    &__head {
+    }
+    &__img-placholder {
+        width: 90%;
+    }
+    &__img {
+        display: block;
+        width: 100%;
+        filter: brightness(80%);
+    }
+
+    &__body {
+        padding: 3rem 2.3rem;
+        span {
+            margin-top: .5rem;
+            font-size: 2.4rem;
+            margin-right: 1rem;
+            color: $specijal;
+        }
+        p {
+            font-size: $normalan-font;
+        }
+    }
+
+    
+}

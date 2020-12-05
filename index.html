@@ -345,7 +345,7 @@
         </div>
         <div class="contact-form__wrapper mt-md">
             <form  id="form" class="form ">
-                <div class="form__control error">
+                <div class="form__control">
                     <label for="fname" class="form__label">First Name</label>
                     <input type="text" name="fname" id="tbFName" class="form__text">
                     <span class="form__message"></span>
@@ -354,20 +354,20 @@
                 <div class="form__control">
                     <label for="lname" class="form__label">Last Name</label>
                     <input type="text" name="lname" id="tbLName" class="form__text">
-                    <span class="form__message">Ovo je poruka o gresci</span>
-                    <span class="material-icons form__icon">report_problem</span>
+                    <span class="form__message"></span>
+                    <span class="material-icons form__icon"></span>
                 </div>
                 <div class="form__control">
                     <label for="dateBirth" class="form__label">Date of Birth</label>
                     <input type="date" name="dateBirth" id="tbDateBirth" class="form__date">
-                    <span class="form__message">Ovo je poruka o gresci</span>
-                    <span class="material-icons form__icon">report_problem</>
+                    <span class="form__message"></span>
+                    <span class="material-icons form__icon"></>
                 </div>
                 <div class="form__control">
                     <label for="gender" class="form__label">Gender</label>
-                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <!-- <span class="form__message">Ovo je poruka o gresci</span> -->
                     <div class="form__options">
-                        <input type="radio" name="gender" value="male" class="form__radio">
+                        <input type="radio" name="gender" value="male" class="form__radio" checked>
                         <label class="form__options-label">Male</label>
                     </div>
                     <div class="form__options">
@@ -378,34 +378,34 @@
                 <div class="form__control">
                     <label for="email" class="form__label">Email</label>
                     <input type="email" name="email" id="tbEmail" class="form__email">
-                    <span class="form__message">Ovo je poruka o gresci</span>
-                    <span class="material-icons form__icon">report_problem</>
+                    <span class="form__message"></span>
+                    <span class="material-icons form__icon"></>
                 </div>
                 <div class="form__control">
                     <label for="checkbox" class="form__label">Pick Your Program</label>
-                    <span class="form__message">Ovo je poruka o gresci</span>
+                    <span id="checkboxMessage" class="form__message"></span>
                     <div class="form__options">
-                        <input type="checkbox" name="ch1" value="explosive" class="form__checkbox">
+                        <input type="checkbox" name="chProgram" value="explosive" class="form__checkbox" >
                         <label class="form__options-label">Explosive</label>
                     </div>
                     <div class="form__options">
-                        <input type="checkbox" name="ch2" value="flexible" class="form__checkobx">
+                        <input type="checkbox" name="chProgram" value="flexible" class="form__checkobx">
                         <label class="form__options-label">Flexible</label>
                     </div>
                     <div class="form__options">
-                        <input type="checkbox" name="ch3" value="strong" class="form__checkobx">
+                        <input type="checkbox" name="chProgram" value="strong" class="form__checkobx">
                         <label class="form__options-label">Strong</label>
                     </div>
                     <div class="form__options">
-                        <input type="checkbox" name="ch4" value="fast" class="form__checkobx">
+                        <input type="checkbox" name="chProgram" value="fast" class="form__checkobx">
                         <label class="form__options-label">Fast</label>
                     </div>
                     <div class="form__options">
-                        <input type="checkbox" name="ch5" value="conditioned" class="form__checkobx">
+                        <input type="checkbox" name="chProgram" value="conditioned" class="form__checkobx">
                         <label class="form__options-label">Conditioned</label>
                     </div>
                     <div class="form__options">
-                        <input type="checkbox" name="ch6" value="functional" class="form__checkobx">
+                        <input type="checkbox" name="chProgram" value="functional" class="form__checkobx">
                         <label class="form__options-label">Functional</label>
                     </div>
                 </div>

@@ -572,7 +572,7 @@ body {
     grid-column: fullBleed-start / fullBleed-end;
     display: grid;
     grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end];
-    padding: 2.3rem; }
+    padding: 2.3rem 0; }
   .footer__head {
     background-color: #a8a8a8; }
   .footer__body {
@@ -584,8 +584,7 @@ body {
   .footer__head-content, .footer__body-content, .footer__footer-content {
     grid-column: center-start / center-end;
     display: grid;
-    grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end];
-    margin: 1.2rem 2.3rem; }
+    grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
   .footer__head-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -711,11 +710,70 @@ input[type=checkbox], input[type=radio] {
   input[type=checkbox], input[type=radio] {
     bottom: 0rem; } }
 
+.about-hero {
+  background-color: khaki;
+  grid-column: fullBleed-start / fullBleed-end;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end];
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(120, 48, 48, 0.4)), url("../../img/athlete-4.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 8rem 0; }
+  .about-hero__content {
+    grid-column: center-start / col-end 5;
+    display: grid;
+    grid-column: center-start / col-start 5;
+    align-self: center; }
+    @media only screen and (max-width: 600px) {
+      .about-hero__content {
+        grid-column: center-start / col-start 8; } }
+  .about-hero__heading {
+    justify-self: start; }
+  .about-hero p {
+    font-size: 1.6rem;
+    color: #fff; }
+
+.team {
+  grid-column: fullBleed-start / fullBleed-end;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  .team__content {
+    grid-column: center-start / center-end; }
+  .team__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    column-gap: 5vh;
+    row-gap: 7vh; }
+  .team__card {
+    display: grid;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
+    transition: all .2s ease;
+    cursor: pointer; }
+    .team__card:hover {
+      transform: translateY(-1rem); }
+  .team__img-placholder {
+    width: 90%; }
+  .team__img {
+    display: block;
+    width: 100%;
+    filter: brightness(80%); }
+  .team__body {
+    padding: 3rem 2.3rem; }
+    .team__body span {
+      margin-top: .5rem;
+      font-size: 2.4rem;
+      margin-right: 1rem;
+      color: #783030; }
+    .team__body p {
+      font-size: 1.6rem; }
+
 .container {
   display: grid;
   grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
   .container__home {
     grid-template-rows: 80vh min-content minmax(40vw, max-content) repeat(4, min-content); }
+  .container__about {
+    grid-template-rows: 50vh min-content minmax(40vw, max-content) repeat(4, min-content); }
 
 .nav {
   position: absolute;

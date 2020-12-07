@@ -3,7 +3,7 @@
 .contact-form {
     grid-column: center-start / center-end;
     display: grid;
-    margin-bottom: 40rem;
+    // margin-bottom: 40rem;
 
     &__wrapper {
         display: grid;
@@ -15,8 +15,9 @@
         }
     }
     &__hero {
-        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .5)), url('../img/athlete-2.jpg');
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .5)), url('../img/athlete-5.jpg');
         background-size: cover;
+        background-position: center;
         
         @include respond(tablet-sm) {
             height: 20vw;

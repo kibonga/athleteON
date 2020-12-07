@@ -60,10 +60,10 @@ a {
   margin-top: 10rem; }
 
 .d-none {
-  display: none; }
+  display: none !important; }
 
 .d-block {
-  display: block; }
+  display: block !important; }
 
 .dark-overlay {
   position: fixed;
@@ -111,6 +111,12 @@ a {
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+@keyframes dissapear {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -632,8 +638,7 @@ body {
 
 .contact-form {
   grid-column: center-start / center-end;
-  display: grid;
-  margin-bottom: 40rem; }
+  display: grid; }
   .contact-form__wrapper {
     display: grid;
     grid-template-columns: 1.6fr 2fr;
@@ -642,8 +647,9 @@ body {
       .contact-form__wrapper {
         grid-template-columns: 1fr; } }
   .contact-form__hero {
-    background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.5)), url("../img/athlete-2.jpg");
-    background-size: cover; }
+    background-image: linear-gradient(rgba(240, 240, 240, 0.2), rgba(120, 48, 48, 0.5)), url("../img/athlete-5.jpg");
+    background-size: cover;
+    background-position: center; }
     @media only screen and (max-width: 56.25em) {
       .contact-form__hero {
         height: 20vw; } }
@@ -774,6 +780,10 @@ input[type=checkbox], input[type=radio] {
     grid-template-rows: 80vh min-content minmax(40vw, max-content) repeat(4, min-content); }
   .container__about {
     grid-template-rows: 50vh min-content minmax(40vw, max-content) repeat(4, min-content); }
+  .container__programs {
+    grid-template-rows: 50vh min-content repeat(4, min-content); }
+  .container__contact {
+    grid-template-rows: 50vh min-content repeat(4, min-content); }
 
 .nav {
   position: absolute;

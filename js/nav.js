@@ -1,26 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Global Load
+    let location = window.location.pathname;
     loadNav();
-    loadHeader();
-    loadServices();
-    
+    loadHeader(location);
     loadFooter();
     
 
 
 
-    let location = window.location.pathname;
+    // let location = window.location.pathname;
     if(location.indexOf('index') != -1) {
         console.log(location);
         console.log("ovo je html strana");
         console.log('usao sam i ovde');
-        loadPrograms();
+        loadPrograms(location);
         loadReviews();
         loadContactForm();
+        loadServices();
     }
     else if(location.indexOf('about') != -1) {
         console.log('ovo je about strana');
+        loadServices();
+    }
+    else if(location.indexOf('programs') != -1) {
+        // console.log('ovo je about strana');
+        loadPrograms(location);
+        loadReviews();
+    }
+    else if(location.indexOf('contact') != -1) {
+        loadContactForm();
+        loadReviews();
     }
     console.log(location);
     
@@ -37,8 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
             ['Home', 'index.html'],
             ['About', 'about.html'],
             ['Programs', 'programs.html'],
+            ['Contact', 'contact.html'],
             ['Author', 'author.html'],
-            ['Docs', 'docs.html']
+            // ['Docs', 'docs.html']
         );
     
         const logo = document.createElement('div');
@@ -114,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Header
-    function loadHeader() {
+    function loadHeader(location) {
         const header = document.getElementById('header');
         const headerContent = document.createElement('div');
         headerContent.classList.add('header__content');
@@ -123,18 +134,30 @@ document.addEventListener('DOMContentLoaded', function() {
         h2.textContent = `where athletes are made`;
         const h1 = document.createElement('h1');
         h1.classList.add('heading-primarni', 'heading-primarni--glavni');
-        h1.textContent = `Turn Your athlete`;
+        if(location.indexOf('index') != -1 ){
+            h1.textContent = `Turn Your athlete`;
+        }else if(location.indexOf('about') != -1) {
+            h1.textContent = `About athlete`;
+        }else if(location.indexOf('programs') != -1) {
+            h1.textContent = `Programs`;
+        }else if(location.indexOf('contact') != -1) {
+            h1.textContent = `Contact athlete`;
+        }
         const span = document.createElement('span');
         span.textContent = `on`;
-        const btn = document.createElement('a');
-        btn.classList.add('btn');
-        btn.textContent = `Our Programs`;
-        btn.setAttribute('href', 'programs.html');
 
         h1.appendChild(span);
         headerContent.appendChild(h2);
         headerContent.appendChild(h1);
-        headerContent.appendChild(btn);
+
+        if(location.indexOf('index') != -1) {
+            const btn = document.createElement('a');
+            btn.classList.add('btn');
+            btn.textContent = `Our Programs`;
+            btn.setAttribute('href', 'programs.html');
+            headerContent.appendChild(btn);
+        }
+        
         header.appendChild(headerContent);
     }
 
@@ -177,22 +200,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     //Programs
-    function loadPrograms() {
+    function loadPrograms(location) {
 
         const nizCards = new Array(
-            ['athlete-1.jpg', 'Explosive', 'athlete, explosive training', '6', '400.00' ],
-            ['athlete-2.jpg', 'Flexible', 'athlete, flexible training','8', '320.00' ],
-            ['athlete-3.jpg', 'Strong', 'athlete, strong training', '4', '430.00' ],
-            ['athlete-4.jpg', 'Fast', 'athlete, fast training', '8', '500.00' ],
-            ['athlete-5.jpg', 'Conditioned', 'athlete, conditioning, training', '10', '460.00' ],
-            ['athlete-6.jpg', 'Functional', 'athlete, functional training', '6', '380.00' ]
+            ['athlete-1.jpg', 'Explosive', 'athlete, explosive training', '6', '400.00', 'weights' ],
+            ['athlete-2.jpg', 'Flexible', 'athlete, flexible training','8', '320.00', 'yoga' ],
+            ['athlete-3.jpg', 'Strong', 'athlete, strong training', '4', '430.00', 'weights' ],
+            ['athlete-4.jpg', 'Fast', 'athlete, fast training', '8', '500.00', 'weights' ],
+            ['athlete-5.jpg', 'Conditioned', 'athlete, conditioning, training', '10', '460.00', 'yoga' ],
+            ['athlete-6.jpg', 'Functional', 'athlete, functional training', '6', '380.00', 'yoga' ]
         );
 
+        
+
         const programs = document.getElementById('programs');
+
         const programsHeading = document.createElement('h3');
         programsHeading.classList.add('heading-sekundarni');
         programsHeading.textContent = 'Our Programs';
         programs.appendChild(programsHeading);
+
         const cards = document.createElement('div');
         cards.classList.add('programs__cards', 'mt-md');
 
@@ -201,6 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Constants
             const card = document.createElement('div');
             card.classList.add('programs__card');
+
+            card.setAttribute(`data-type`, `${nizCards[i][5]}`)
 
             const head = document.createElement('div');
             head.classList.add('programs__head');
@@ -264,6 +293,44 @@ document.addEventListener('DOMContentLoaded', function() {
             cards.appendChild(card);
         }
         programs.appendChild(cards);
+
+    
+
+        // Ovde smo menjali
+       if(location.indexOf('programs') != -1) {
+        const btnGroup = document.getElementById('btn-group');
+        const nizBtns = btnGroup.querySelectorAll('.btn');
+
+        const eachBtn = document.querySelectorAll('.programs__card');
+
+        nizBtns.forEach( e => {
+            e.addEventListener('click', e => {
+                e.preventDefault();
+                console.log(e);
+                eachBtn.forEach(el => {
+                    console.log(e.target.id);
+                    if(e.target.id == 'all'){
+                        el.classList.remove('d-none');
+                    }
+                    else {
+                        if(e.target.id !=  el.getAttribute('data-type')) {
+                            el.classList.add('d-none');
+                        }
+                        else {
+                            el.classList.remove('d-none');
+                        }
+                    }
+                });
+                
+            });
+        });
+       }
+
+
+
+
+
+       
 
         function loadProgramsModal(idx) {
             const programsModal = document.getElementById('programs-modal');
@@ -468,11 +535,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ['Home', 'index.html'],
             ['About', 'about.html'],
             ['Programs', 'programs.html'],
+            ['Contact', 'contact.html'],
             ['Author', 'author.html'],
-            ['Docs', 'docs.pdf']
+            // ['Docs', 'docs.pdf']
         );
         const nizUseful = new Array(
-            ['Sitemap'], ['LinkedIn'], ['Github'], ['Instagram' ]
+            ['Docs', 'docs.pdf'],
+            ['Sitemap', 'sitemap.xml'],
+            ['LinkedIn', 'https://linkedin.com'],
+            ['Github', 'https://github.com']
         );
         const nizFooterContact = new Array(
             ['home', 'Tosin Bunar bb, 4F'],
@@ -526,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         for(let i=0; i<nizUseful.length; i++) {
             footerContent += `
-                        <li><a href="#">${nizUseful[i]}</a></li>
+                        <li><a href="${nizUseful[i][1]}">${nizUseful[i][0]}</a></li>
             `;
         }
         footerContent += `

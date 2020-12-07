@@ -11,10 +11,10 @@
         // background-color: cornsilk;
     }
     &__programs {
-
+        grid-template-rows: 50vh min-content repeat(4,min-content);
     }
     &__contact {
-
+        grid-template-rows: 50vh min-content repeat(4,min-content);
     }
     &__author {
 

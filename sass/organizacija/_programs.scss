@@ -49,10 +49,11 @@
             display: grid;
             transition: all .2s ease;
             // cursor: pointer;
-            @include box-shadow-1;
+            // @include box-shadow-1;
             &:hover {
                 // @include box-shadow-1;
                 background-color: $osnovna;
+                @include box-shadow-1;
             }
         }
     }

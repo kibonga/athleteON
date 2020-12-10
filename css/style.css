@@ -241,6 +241,7 @@ body {
   width: 5rem;
   height: 5rem;
   background-color: #f0f0f0;
+  z-index: 10;
   cursor: pointer;
   box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
   display: grid;
@@ -284,7 +285,7 @@ body {
       transform: translateY(-1rem);
       box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.5); }
   .services__icon {
-    color: #000; }
+    color: #783030; }
   .services__card-heading {
     font-size: 1.5rem; }
   .services p {
@@ -388,10 +389,10 @@ body {
     column-gap: 5rem; }
     .programs__body > * {
       display: grid;
-      transition: all .2s ease;
-      box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+      transition: all .2s ease; }
       .programs__body > *:hover {
-        background-color: #f0f0f0; }
+        background-color: #f0f0f0;
+        box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
   .programs__heading {
     position: absolute;
     background-image: linear-gradient(rgba(247, 247, 247, 0.8), rgba(247, 247, 247, 0.8));

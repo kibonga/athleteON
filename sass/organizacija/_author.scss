@@ -1,0 +1,76 @@
+
+
+.author {
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    @include fullBleed;
+    // background-color: teal;
+
+    &__wrapper {
+        grid-column: center-start / center-end;
+        // background-color: thistle;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-rows: 1fr;
+    }
+
+    &__main {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        background-color: $osnovna;
+        @include box-shadow-1;
+
+        @media only screen and(max-width: 800px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__img-placeholder {
+        position: relative;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        filter: grayscale(.5);
+    }
+
+    &__caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(rgba($siva-blaga-1, .8), rgba($siva-blaga-1, .8));
+        padding: 1.2rem 2.3rem;
+    }
+
+    &__info {
+        // padding: 10%;
+        display: grid;
+        padding: 1.2rem 2.3rem;
+        
+        @media only screen and(min-width: 800px) {
+            @include gridCenter;
+        }
+        .btn {
+            padding: .6rem 2.3rem;
+        }
+    }
+
+    &__more {
+        @include box-shadow-1;
+    }
+
+    p {
+        font-size: $normalan-font;
+        margin-bottom: 1.5rem;
+        @media only screen and(max-width: 800px) {
+            // font-size: 1.45rem;
+        }
+    }
+    span {
+        text-transform: uppercase;
+    }
+
+}

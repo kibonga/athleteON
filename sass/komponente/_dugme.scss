@@ -40,27 +40,27 @@
     }
 }
 
-// .btn-white {
+// .btn-secondary {
 //     &:link,
 //     &:visited {
-//         text-transform: uppercase;
+//         // text-transform: uppercase;
 //         text-decoration: none;
-//         padding: 1.2rem 2.3rem;
+//         padding: .5rem 2.3rem;
 //         display: inline-block;
-//         background-color: $specijal;
-//         color: $osnovna;
+//         background-color: $bela;
+//         color: $specijal;
 //         transition: all .2s;
 //         position: relative;
 //         font-size: $normalan-font;
-//         @include box-shadow-1;
+//         // @include box-shadow-1;
 
 //         border: none;
 //         cursor: pointer;
 //     }
 //     &:hover {
 //         transform: scale(1.05);
-//         background-color: $osnovna;
-//         color: $specijal;
+//         background-color: $specijal;
+//         color: $osnovna;
 //         @include box-shadow-2;
 //     }
 // }

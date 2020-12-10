@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadNav();
     loadHeader(location);
     loadFooter();
-    
-
-
+    loadBackToTop()
 
     // let location = window.location.pathname;
     if(location.indexOf('index') != -1) {
@@ -22,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     else if(location.indexOf('about') != -1) {
         console.log('ovo je about strana');
         loadServices();
+        loadFaq();
     }
     else if(location.indexOf('programs') != -1) {
         // console.log('ovo je about strana');
@@ -31,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     else if(location.indexOf('contact') != -1) {
         loadContactForm();
         loadReviews();
+    }
+    else if(location.indexOf('author') != -1) {
+        loadAccordion()
     }
     console.log(location);
     
@@ -42,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Nav
     function loadNav() {
         const nav = document.getElementById('nav');
-    
+
+       
+        
         const nizNav = new Array(
             ['Home', 'index.html'],
             ['About', 'about.html'],
@@ -52,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // ['Docs', 'docs.html']
         );
     
+    
         const logo = document.createElement('div');
         const logoLink = document.createElement('a');
         logoLink.textContent = `athleteON`;
@@ -60,10 +65,21 @@ document.addEventListener('DOMContentLoaded', function() {
         logo.classList.add('nav__logo');
         nav.appendChild(logo);
         const ul = document.createElement('ul');
-        ul.classList.add('nav__menu')
+        ul.classList.add('nav__menu');
         
         for(let i=0; i<nizNav.length; i++) {
             const li = document.createElement('li');
+            if(location.substring(1, location.length) == nizNav[i][1] && window.screen.availWidth >= 850) {
+                li.classList.add('active');
+            }
+            window.addEventListener('resize', () => {
+                if(window.screen.availWidth >= 850 && location.substring(1, location.length) == nizNav[i][1]) {
+                    li.classList.add('active');
+                }
+                else {
+                    li.classList.remove('active');
+                }
+            })
             li.classList.add('nav__item');
             const a = document.createElement('a');
             a.textContent = nizNav[i][0];
@@ -73,6 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ul.appendChild(li);
         }
 
+        // nizNav.forEach(el => {
+        //     if(el[1] == location) {
+        //         console.log(el);
+        //     }
+        // });
+    
         const hamburger = document.createElement('div');
         hamburger.classList.add('nav__hamburger');
         const span = document.createElement('span');
@@ -82,44 +104,71 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.appendChild(span);
         ul.appendChild(hamburger);
         nav.appendChild(ul);
-    
-    
-        //Nav Mobile
-        const navMobile = document.getElementById('nav-mobile');
-        navMobile.classList.add('left');
-        const ulMobile = document.createElement('ul');
-        ulMobile.classList.add('nav-mobile__menu', 'mt-lg')
-        for(let i=0; i<nizNav.length; i++) {
-            const li = document.createElement('li');
-            li.classList.add('nav-mobile__item');
-            const a = document.createElement('a');
-            a.textContent = nizNav[i][0];
-            a.setAttribute('href', nizNav[i][1]);
-            a.classList.add('nav-mobile__link')
-            li.appendChild(a);
-            ulMobile.appendChild(li);
+
+        loadMobileNav();
+
+
+
+        function loadMobileNav() {
+            const navMobile = document.getElementById('nav-mobile');
+            navMobile.classList.add('left');
+            const ulMobile = document.createElement('ul');
+            ulMobile.classList.add('nav-mobile__menu', 'mt-lg')
+            for(let i=0; i<nizNav.length; i++) {
+                const li = document.createElement('li');
+                li.classList.add('nav-mobile__item');
+                if(location.substring(1, location.length) == nizNav[i][1]) {
+                    li.classList.add('active');
+                }
+                const a = document.createElement('a');
+                a.textContent = nizNav[i][0];
+                a.setAttribute('href', nizNav[i][1]);
+                a.classList.add('nav-mobile__link')
+                li.appendChild(a);
+                ulMobile.appendChild(li);
+            }
+            navMobile.appendChild(ulMobile);
+            
+            const dark = document.getElementById('dark-overlay');
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+        
+                navMobile.classList.toggle('left');
+                navMobile.classList.toggle('right');
+                darkOverlay();
+            });
+            window.addEventListener('resize', () => {
+                if(window.screen.availWidth > 850 && !dark.classList.contains('d-none')) {
+                    darkOverlay();
+                    console.log('test');
+                    navMobile.classList.add('left');
+                    navMobile.classList.remove('right');
+                    
+                }
+            })
+            
+            dark.addEventListener('click', (e) => {
+                e.stopPropagation();
+            if(!dark.classList.contains('d-none')) {
+                darkOverlay();
+                navMobile.classList.toggle('left');
+                navMobile.classList.toggle('right');
+            }
+            });
+            // }
+            function darkOverlay() {
+                dark.classList.toggle('d-none'); 
+            }
+            function removeDarkOverlay() {
+                dark.classList.remove('d-none');
+                console.log('koji kurac');
+            }
+
+        // Kraj loadMobileNav()
         }
-        navMobile.appendChild(ulMobile);
-    
-        const dark = document.getElementById('dark-overlay');
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-    
-            navMobile.classList.toggle('left');
-            navMobile.classList.toggle('right');
-            darkOverlay();
-        });
-        dark.addEventListener('click', (e) => {
-            e.stopPropagation();
-        if(!dark.classList.contains('d-none')) {
-            darkOverlay();
-            navMobile.classList.toggle('left');
-            navMobile.classList.toggle('right');
-        }
-        });
-        function darkOverlay() {
-            dark.classList.toggle('d-none'); 
-        }
+
+
+    // Kraj loadNav()    
     }
 
 
@@ -142,6 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
             h1.textContent = `Programs`;
         }else if(location.indexOf('contact') != -1) {
             h1.textContent = `Contact athlete`;
+        }else if(location.indexOf('author') != -1) {
+            h1.textContent = `Author`;
         }
         const span = document.createElement('span');
         span.textContent = `on`;
@@ -630,7 +681,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
+
+
+
+
+
     function loadContactForm() {
+        $('#contact-modal').hide();
 
         const form = document.getElementById('form');
         // console.log(form);
@@ -880,6 +937,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Ovo su finalne vrednosti');
             console.log(checked);
             console.log(input);
+            loadContactModal(checked, input);
         }
         
         
@@ -889,6 +947,93 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /// Kraj loadContactForm()      
     }
+
+    function loadAccordion() {
+        const moreInfo = document.getElementById('author-more');
+        const btnReadMore = document.getElementById('author__read-more');
+        const content = `
+        <h4 class="heading-ternarni mb-sm mt-sm">About Author</h4>
+        <p>My name is Pavle Djurdjic and I'm currently attending Visoka ICT, residing in Studenjak.
+        <p>My main ambition is to become a Professinonal Web Developer.</p>
+        <p>This is my fourth Web Project. It was done exclusively with HTML5, CSS3, JS and SASS (I had to include JQuery in order not to get penalized).</p>
+        <p>Make sure to check out my other works. You can find it all at my <a href="#">Portfolio</a> webpage.</p>
+        <p>If You'd like to see know more about this Project here is <a href="#">Docs</a>.</p>
+        </p>`;
+
+    
+        btnReadMore.addEventListener('click', function(e) {
+            e.preventDefault();
+            if(moreInfo.innerHTML == '') {
+                moreInfo.innerHTML = content;
+                moreInfo.style.padding = '1.2rem 2.3rem';
+                btnReadMore.textContent = `Read Less`;
+            }else {
+                moreInfo.innerHTML = '';
+                moreInfo.style.padding = '0';
+                btnReadMore.textContent = `Read More...`;
+            }
+            
+        });
+    }
+
+
+    // JQuery No.1
+    function loadFaq() {
+        $('#faq-accordion > .faq__accordion > .faq__head').click(function() {
+            $('.active-accordion').not(this).removeClass('active-accordion').next().hide(300);
+    
+            $(this).toggleClass('active-accordion');
+            if(false == $(this).next().is(':visible')) {
+                $('#faq-accordion > .faq__body').slideUp(300);
+            }
+            $(this).next().slideToggle(300);
+        });
+    
+        let animationIsOff = $.fx.off;
+        $.fx.off = true;
+        $('#faq-accordion > .faq__accordion > .faq__head').click()
+        $.fx.off = animationIsOff;
+    }
+
+
+    // JQuery No.2
+    function loadContactModal(checked, input) {
+        const contactModal = $('#contact-modal');
+        $('#contact-modal').fadeIn(200);
+        $('#dark-overlay-contact-modal').fadeIn(300);
+
+        $('#contact-modal-first-name').text(input[0]);
+        $('#contact-modal-last-name').text(input[1]);
+        $('#contact-modal-email').text(input[3]);
+
+        for(let i=0; i<checked.length; i++) {
+            $('.contact-modal__selected-programs').append(`<div class="contact-modal__selected-program">${checked[i].charAt(0).toUpperCase()+checked[i].slice(1)}</div>`)
+        }
+
+    
+        $('.contact-modal__close, #dark-overlay-contact-modal').click(function() {
+            $('#contact-modal').fadeOut(200);
+            $('#dark-overlay-contact-modal').fadeOut(300);
+        });
+
+    }
+
+   
+    //JQuery No.3
+    function loadBackToTop() {
+        $(window).scroll(function() {
+            if($(this).scrollTop()) {
+                $('#top').fadeIn();
+            }else {
+                $('#top').fadeOut();
+            }
+        });
+
+        $('#top').click(function() {
+            $('html, body').animate({scrollTop: 0}, 1000);
+        });
+    }
+
         
 
 ///Kraj Globalne Funkcije  

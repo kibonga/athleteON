@@ -22,6 +22,7 @@
 }
 .mb-sm {margin-bottom: 1.5rem;}
 
+.mt-sm {margin-top: 1.5rem;}
 .mt-md {margin-top: 5rem;}
 .mt-lg {margin-top: 8rem;}
 .mt-xl {margin-top: 10rem;}
@@ -35,6 +36,19 @@
 .d-block {
     display: block!important;
 }
+
+
+// Opacity
+.opacity-0 {
+    opacity: 0!important;
+    height: 0;
+    z-index: -1;
+    transform: translateY(-30rem);
+}
+// .opacity-1 {
+//     opacity: 1!important;
+//     height: auto!important;
+// }
 
 
 // Dark Overlay

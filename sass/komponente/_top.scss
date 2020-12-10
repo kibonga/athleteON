@@ -1,0 +1,21 @@
+
+
+.top {
+    position: fixed;
+    bottom: 5rem;
+    right: 3rem;
+    color: $crna;
+    width: 5rem;
+    height: 5rem;
+    background-color: $osnovna;
+    cursor: pointer;
+    @include box-shadow-1;
+    display: grid;
+    @include gridCenter;
+    &:hover {
+        background-color: $bela;
+    }
+    &:hover >  span {
+        color: $specijal
+    }
+}

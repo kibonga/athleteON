@@ -1,0 +1,43 @@
+
+
+.faq {
+    background-color: $osnovna;
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    @include fullBleed;
+
+    &__content {
+        grid-column: center-start / center-end;
+    }
+
+    &__accordions {
+        & > * {
+            background-color: $bela;
+        }
+    }
+
+    &__head {
+        &:hover {
+            cursor: pointer;
+        }
+        h4 {
+            padding: 1.2rem 2.3rem;
+            @include box-shadow-1;
+        }
+    }   
+
+    &__body {
+        background-color: $siva-blaga-1;
+        padding: 1.2rem 2.3rem;
+        @include box-shadow-1;
+    }
+
+    p {
+        font-size: $normalan-font;
+    }
+
+    .active-accordion{
+        border-bottom:  .1rem solid $osnovna-tamna-2;
+    }
+
+}

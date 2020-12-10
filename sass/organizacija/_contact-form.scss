@@ -3,6 +3,7 @@
 .contact-form {
     grid-column: center-start / center-end;
     display: grid;
+    position: relative;
     // margin-bottom: 40rem;
 
     &__wrapper {
@@ -23,8 +24,105 @@
             height: 20vw;
         }
     }
+
 }
 
+
+.contact-modal {
+    // display: none!important;
+    background-color: $bela;
+    @include box-shadow-1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    min-height: 40rem;
+    z-index: 200;
+    @include respond(tablet-sm) {
+        width: 85%;
+    }
+    @media only screen and(max-width: 500px) {
+        width: 115%;
+    }
+
+    width: 60%;
+        @include absoluteCenter;
+        display: grid;
+        grid-template-rows: 25vh min-content;
+
+    &__img {
+        background-image: linear-gradient(rgba($osnovna, .2), rgba($specijal, .7)), url('../img/athlete-1.jpg');
+        background-position: center;
+        background-size: cover;
+        display: grid;
+        justify-items: start;
+        align-items: center;
+        padding-left: 3vw;
+    }
+
+    &__body {
+        padding: 2vw 3vw;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min-content, max-content));
+    }
+
+    &__info {
+        text-transform: uppercase;
+        font-size: $normalan-font;
+    }
+
+    &__info-value {
+        font-size: $normalan-font;
+        font-weight: 700;
+    }
+
+    &__selected-programs {
+        margin: 1.5rem 0;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(min-content, 12rem));
+        font-size: $normalan-font;
+        
+    }
+
+    &__selected-program {
+        @include box-shadow-1;
+        padding: 1.2rem 2.3rem;
+        &:hover {
+            background-color: rgba($osnovna, .2);
+            cursor: pointer;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        @media only screen and(max-width: 500px) {
+            padding: .2rem .6rem;
+            transform: scale(.8);
+        }
+        display: inline-block;
+        @include box-shadow-1;
+        background-color: $bela;
+        color: $crna;
+        padding: .5rem 1rem;
+        cursor: pointer;
+    }
+}
+
+#dark-overlay-contact-modal {
+    display: none;
+    background-image: linear-gradient(rgba(51, 51, 51, 0.63), rgba(51, 51, 51, 0.63));
+    // background-color: khaki;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%!important;
+    height: 100%;
+    z-index: 15;
+}
 
 .form {
     grid-template-columns: min-content;

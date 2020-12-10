@@ -1,12 +1,16 @@
 
 
 .nav {
-    position: absolute;
+    position: fixed;
+    @media only screen and(max-width: 850px) {
+        position: absolute;
+    }
     top: 0;
     left: 0;
     right: 0;
     background-color: $osnovna;
     @include box-shadow-1;
+    z-index: 1000;
 
     display: grid;
     @include fullBleed;
@@ -52,6 +56,10 @@
         @media only screen and(min-width: 850px) {
             display: block;
         }
+    }
+
+    .active {
+        background-color: $osnovna-tamna-1;
     }
 
 }

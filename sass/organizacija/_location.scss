@@ -1,0 +1,41 @@
+
+.location {
+    grid-column: fullBleed-start / fullBleed-end;
+    display: grid;
+    @include fullBleed;
+
+
+    &__content {
+        grid-column: center-start / center-end;
+        
+    }
+
+    &__info {
+        @include box-shadow-1;
+        
+    }
+
+    h4 {
+        padding: 1.2rem 2.3rem;
+    }
+
+    &__pair {
+        margin-bottom: 1rem;
+        padding: 1.2rem 2.3rem;
+    }
+
+    &__pair:nth-last-of-type(even) {
+        background-color: $osnovna;
+    }
+
+
+    span {
+        text-transform: uppercase;
+        font-size: $normalan-font;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: $normalan-font;
+    }
+}

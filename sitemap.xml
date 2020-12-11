@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    <url>
+        <loc>https://sajt/index.html</loc>
+        <lastmod>2019-12-06T12:27:13+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://sajt/about.html</loc>
+        <lastmod>2019-12-06T12:27:13+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://sajt/programs.html</loc>
+        <lastmod>2019-12-06T12:27:13+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://sajt/contact.html</loc>
+        <lastmod>2019-12-06T12:27:13+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+        </url>
+    <url>
+        <loc>https://sajt/author.html</loc>
+        <lastmod>2019-12-06T12:27:13+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.60</priority>
+    </url>
+</urlset>

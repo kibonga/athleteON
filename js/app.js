@@ -7,11 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFooter();
     loadBackToTop()
 
-    // let location = window.location.pathname;
     if(location.indexOf('index') != -1) {
-        console.log(location);
-        console.log("ovo je html strana");
-        console.log('usao sam i ovde');
         loadPrograms(location);
         loadReviews();
         loadContactForm();
@@ -19,12 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
         loadAosPlugin();
     }
     else if(location.indexOf('about') != -1) {
-        console.log('ovo je about strana');
         loadServices();
         loadFaq();
     }
     else if(location.indexOf('programs') != -1) {
-        // console.log('ovo je about strana');
         loadPrograms(location);
         loadReviews();
         loadAosPlugin();
@@ -36,28 +30,19 @@ document.addEventListener('DOMContentLoaded', function() {
     else if(location.indexOf('author') != -1) {
         loadAccordion()
     }
-    console.log(location);
-    
-    
-
-
 
 
     // Nav
     function loadNav() {
         const nav = document.getElementById('nav');
 
-       
-        
         const nizNav = new Array(
             ['Home', 'index.html'],
             ['About', 'about.html'],
             ['Programs', 'programs.html'],
             ['Contact', 'contact.html'],
             ['Author', 'author.html'],
-            // ['Docs', 'docs.html']
         );
-    
     
         const logo = document.createElement('div');
         const logoLink = document.createElement('a');
@@ -90,12 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
             li.appendChild(a);
             ul.appendChild(li);
         }
-
-        // nizNav.forEach(el => {
-        //     if(el[1] == location) {
-        //         console.log(el);
-        //     }
-        // });
     
         const hamburger = document.createElement('div');
         hamburger.classList.add('nav__hamburger');
@@ -108,8 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.appendChild(ul);
 
         loadMobileNav();
-
-
 
         function loadMobileNav() {
             const navMobile = document.getElementById('nav-mobile');
@@ -142,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('resize', () => {
                 if(window.screen.availWidth > 850 && !dark.classList.contains('d-none')) {
                     darkOverlay();
-                    console.log('test');
                     navMobile.classList.add('left');
                     navMobile.classList.remove('right');
                     
@@ -163,13 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             function removeDarkOverlay() {
                 dark.classList.remove('d-none');
-                console.log('koji kurac');
             }
-
         // Kraj loadMobileNav()
         }
-
-
     // Kraj loadNav()    
     }
 
@@ -264,8 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ['athlete-6.jpg', 'Functional', 'athlete, functional training', '6', '380.00', 'yoga' ]
         );
 
-        
-
         const programs = document.getElementById('programs');
 
         const programsHeading = document.createElement('h3');
@@ -322,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const link = document.createElement('a');
             link.classList.add('btn', 'btn--scale', 'programs__btn');
             link.textContent = 'View More';
-            // link.setAttribute('href', '');
             link.addEventListener('click', () => {
                 loadProgramsModal(`${i}`);
             });
@@ -348,9 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         programs.appendChild(cards);
 
-    
-
-        // Ovde smo menjali
        if(location.indexOf('programs') != -1) {
         const btnGroup = document.getElementById('btn-group');
         const nizBtns = btnGroup.querySelectorAll('.btn');
@@ -360,9 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nizBtns.forEach( e => {
             e.addEventListener('click', e => {
                 e.preventDefault();
-                console.log(e);
                 eachBtn.forEach(el => {
-                    console.log(e.target.id);
                     if(e.target.id == 'all'){
                         el.classList.remove('d-none');
                     }
@@ -379,12 +343,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
        }
-
-
-
-
-
-       
 
         function loadProgramsModal(idx) {
             const programsModal = document.getElementById('programs-modal');
@@ -489,7 +447,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } 
 
-
     // Reviews
     function loadReviews(i = 0) {
         const reviews = document.getElementById('reviews');
@@ -567,7 +524,6 @@ document.addEventListener('DOMContentLoaded', function() {
         back.addEventListener('click', () => {
             if(i <= 0) {
                 loadReviews(nizReviewsLeft.length - 1)
-                // console.log(nizReviewsLeft.length - 1)
             }
             else {
                 loadReviews(i-1)
@@ -591,7 +547,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ['Programs', 'programs.html'],
             ['Contact', 'contact.html'],
             ['Author', 'author.html'],
-            // ['Docs', 'docs.pdf']
         );
         const nizUseful = new Array(
             ['Docs', 'docs.pdf'],
@@ -651,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         for(let i=0; i<nizUseful.length; i++) {
             footerContent += `
-                        <li><a href="${nizUseful[i][1]}">${nizUseful[i][0]}</a></li>
+                        <li><a href="${nizUseful[i][1]}" target='_blank'>${nizUseful[i][0]}</a></li>
             `;
         }
         footerContent += `
@@ -683,17 +638,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     }
 
-
-
-
-
-
-
     function loadContactForm() {
         $('#contact-modal').hide();
 
         const form = document.getElementById('form');
-        // console.log(form);
 
         const firstName = form.fname;
         const lastName = form.lname;
@@ -773,9 +721,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         function checkNameInvalid(e, idx) {
-            //e.value.length < 3 || e.value.length > 15
-            // console.log(e.value);
-            // console.log(regName.test(e.value));
             if(!regName.test(e.value)) {
                 message.innerText = `${nizErrMsg[0][0]}`;
                 parent.classList.add('error');
@@ -824,7 +769,6 @@ document.addEventListener('DOMContentLoaded', function() {
             icon.innerText = `report_problem`;
         }
         function checkEmailInvalid(e, idx) {
-            // console.log(e.value);
             if(regEmail.test(e.value)) {
                 validInput(e, idx);
             }
@@ -837,11 +781,6 @@ document.addEventListener('DOMContentLoaded', function() {
             parent.classList.add('error');
             icon.innerText = `report_problem`;
         }
-
-        
-        
-        // console.log(checkboxMessage);
-
         
         submit.addEventListener('click', e => {
             let countValidInputs = 0;
@@ -850,17 +789,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const allCheckboxes = form.chProgram;
             const nizCheckedValues = new Array();
             
-            
-            // console.log(allCheckboxes);
             let countCheckboxes = 0;
             allCheckboxes.forEach(el => {
                 if(el.checked) {
                     countCheckboxes++;
                     nizCheckedValues.push(el.value);
-                    // console.log(nizCheckedValues);
                 }
                 else {
-                    // console.log('nije cekiran');
                 }
             });
             if(countCheckboxes === 0) {
@@ -876,15 +811,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if(nizCheckedValues.length === 0) {
                 checkboxesInvalid();
             }
-            // console.log(nizCheckedValues);
             //Checkboxes
 
 
 
             nizInputs.forEach(el => {
-                // console.log(el.parentElement);
                 if(!el.parentElement.classList.contains('error') && (el.value != ``)) {
-                    // console.log('uslo u el');
                     countValidInputs += 1;
                 }
             })
@@ -897,12 +829,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }
-            // console.log(nizInputs.length, countValidInputs);
             if(nizInputs.length == countValidInputs && nizCheckedValues.length >= 1) {
                 nizInputs.forEach(el => {
                     nizAllInputValues.push(el.value);
-                    // console.log(nizAllInputValues);
-                    // Ovde proverava sve inpute
                     el.value = ``;
                     el.parentElement.classList.remove('success');
                     el.nextElementSibling.innerText = ``;
@@ -910,7 +839,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             else {
-                // console.log('nije dobra forma');
                 nizInputs.forEach((e, idx) => {
                     if(e.value == ``) {
                         inputEmptySubmit(e, idx);
@@ -921,9 +849,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if(nizInputs.length == countValidInputs && nizCheckedValues.length >= 1){
                 sendFinalValues(nizCheckedValues, nizAllInputValues);
             }
-            
-
-
 
         });
         form.addEventListener('submit', e => {
@@ -937,15 +862,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } 
 
         function sendFinalValues(checked, input) {
-            console.log('Ovo su finalne vrednosti');
-            console.log(checked);
-            console.log(input);
             loadContactModal(checked, input);
         }
-        
-        
-
-        
 
         loadInputToolTip(nizInputs);
     /// Kraj loadContactForm()      
@@ -969,11 +887,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if(moreInfo.innerHTML == '') {
                 moreInfo.innerHTML = content;
                 moreInfo.style.padding = '1.2rem 2.3rem';
-                btnReadMore.textContent = `Read Less`;
+                btnReadMore.textContent = `Show Less`;
             }else {
                 moreInfo.innerHTML = '';
                 moreInfo.style.padding = '0';
-                btnReadMore.textContent = `Read More...`;
+                btnReadMore.textContent = `Show More...`;
             }
             
         });
@@ -999,7 +917,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // JQuery numero Dos
     function loadContactModal(checked, input) {
-        const contactModal = $('#contact-modal');
         $('#contact-modal').fadeIn(200);
         $('#dark-overlay-contact-modal').fadeIn(300);
 
@@ -1039,10 +956,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Starts with a capital and only contains letters (3-15)', 'Starts with a capital and only contains letters (3-15)', 'Must be older than 18', 'Must not contain any whitespace or start with a Number'
         );
 
-        console.log(nizInputs[0].id);
-
         for(let i=0; i<nizInputs.length; i++) {
-            console.log(nizInputs[i], nizInputToolTipMsg[i]);
 
             $(`#${nizInputs[i].id}`).hover(function() {
                 $(this).css('cursor','pointer').attr('title', `${nizInputToolTipMsg[i]}`);

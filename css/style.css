@@ -949,11 +949,33 @@ input[type=checkbox], input[type=radio] {
   .faq .active-accordion {
     border-bottom: 0.1rem solid #a8a8a8; }
 
+.location {
+  grid-column: fullBleed-start / fullBleed-end;
+  display: grid;
+  grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
+  .location__content {
+    grid-column: center-start / center-end; }
+  .location__info {
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5); }
+  .location h4 {
+    padding: 1.2rem 2.3rem; }
+  .location__pair {
+    margin-bottom: 1rem;
+    padding: 1.2rem 2.3rem; }
+  .location__pair:nth-last-of-type(even) {
+    background-color: #f0f0f0; }
+  .location span {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 700; }
+  .location p {
+    font-size: 1.6rem; }
+
 .container {
   display: grid;
   grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
   .container__home {
-    grid-template-rows: 80vh min-content minmax(40vw, max-content) repeat(4, min-content); }
+    grid-template-rows: 80vh min-content minmax(40vw, max-content) repeat(3, min-content); }
   .container__about {
     grid-template-rows: 50vh min-content minmax(40vw, max-content) repeat(4, min-content); }
   .container__programs {
@@ -970,7 +992,7 @@ input[type=checkbox], input[type=radio] {
   right: 0;
   background-color: #f0f0f0;
   box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 10;
   display: grid;
   grid-template-columns: [fullBleed-start] minmax(7rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 11rem) [col-end]) [center-end] minmax(7rem, 1fr) [fullBleed-end]; }
   @media only screen and (max-width: 850px) {
